@@ -2,7 +2,7 @@ import requests
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.forms import inlineformset_factory
-from .models import Bandsdata
+from .models import banddata
 from django.contrib.auth.forms import UserCreationForm
 
 from django.contrib import messages
@@ -62,5 +62,5 @@ def register(request):
 
 @login_required(login_url='login')
 def dashboard(request):
-    data = Bandsdata.objects.all()
+    data = banddata.objects.all()
     return render(request, 'home.html', {'datas': data})

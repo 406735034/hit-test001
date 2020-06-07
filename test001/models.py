@@ -27,9 +27,9 @@ class AuthGroupPermissions(models.Model):
 
 
 class AuthPermission(models.Model):
-    name = models.CharField(max_length=255)
     content_type = models.ForeignKey('DjangoContentType', models.DO_NOTHING)
     codename = models.CharField(max_length=100)
+    name = models.CharField(max_length=255)
 
     class Meta:
         managed = False
@@ -40,14 +40,14 @@ class AuthPermission(models.Model):
 class AuthUser(models.Model):
     password = models.CharField(max_length=128)
     last_login = models.DateTimeField(blank=True, null=True)
-    is_superuser = models.IntegerField()
+    is_superuser = models.BooleanField()
     username = models.CharField(unique=True, max_length=150)
     first_name = models.CharField(max_length=30)
-    last_name = models.CharField(max_length=150)
     email = models.CharField(max_length=254)
-    is_staff = models.IntegerField()
-    is_active = models.IntegerField()
+    is_staff = models.BooleanField()
+    is_active = models.BooleanField()
     date_joined = models.DateTimeField()
+    last_name = models.CharField(max_length=150)
 
     class Meta:
         managed = False
@@ -74,44 +74,14 @@ class AuthUserUserPermissions(models.Model):
         unique_together = (('user', 'permission'),)
 
 
-class Bandsdata(models.Model):
-    username = models.TextField(blank=True, null=True)
-    password = models.BigIntegerField(blank=True, null=True)
-    male = models.FloatField(blank=True, null=True)
-    female = models.FloatField(blank=True, null=True)
-    data_time = models.TextField(blank=True, null=True)
-    userid = models.BigIntegerField(blank=True, null=True)
-    heart_recordnum = models.BigIntegerField(db_column='heart_recordNum', blank=True, null=True)  # Field name made lowercase.
-    heart_max = models.BigIntegerField(blank=True, null=True)
-    heart_min = models.BigIntegerField(blank=True, null=True)
-    heart_total = models.BigIntegerField(blank=True, null=True)
-    sleep_deepsleeptime = models.BigIntegerField(db_column='sleep_deepSleepTime', blank=True, null=True)  # Field name made lowercase.
-    sleep_lightsleeptime = models.BigIntegerField(db_column='sleep_lightSleepTime', blank=True, null=True)  # Field name made lowercase.
-    sleep_awaketime = models.BigIntegerField(db_column='sleep_awakeTime', blank=True, null=True)  # Field name made lowercase.
-    sleep_score = models.FloatField(blank=True, null=True)
-    sleep_waketimes = models.BigIntegerField(db_column='sleep_wakeTimes', blank=True, null=True)  # Field name made lowercase.
-    activity_totalsteps = models.BigIntegerField(db_column='activity_totalSteps', blank=True, null=True)  # Field name made lowercase.
-    activity_totalcalories = models.BigIntegerField(db_column='activity_totalCalories', blank=True, null=True)  # Field name made lowercase.
-    activity_totaldistances = models.BigIntegerField(db_column='activity_totalDistances', blank=True, null=True)  # Field name made lowercase.
-    activity_moststeps = models.BigIntegerField(db_column='activity_mostSteps', blank=True, null=True)  # Field name made lowercase.
-    sh150_light = models.BigIntegerField(blank=True, null=True)
-    sh150_moderate = models.BigIntegerField(blank=True, null=True)
-    sh150_vigorous = models.BigIntegerField(blank=True, null=True)
-    hasvalue = models.IntegerField(db_column='hasValue', blank=True, null=True)  # Field name made lowercase.
-
-    class Meta:
-        managed = False
-        db_table = 'bandsdata'
-
-
 class DjangoAdminLog(models.Model):
     action_time = models.DateTimeField()
     object_id = models.TextField(blank=True, null=True)
     object_repr = models.CharField(max_length=200)
-    action_flag = models.PositiveSmallIntegerField()
     change_message = models.TextField()
     content_type = models.ForeignKey('DjangoContentType', models.DO_NOTHING, blank=True, null=True)
     user = models.ForeignKey(AuthUser, models.DO_NOTHING)
+    action_flag = models.PositiveSmallIntegerField()
 
     class Meta:
         managed = False
@@ -146,3 +116,36 @@ class DjangoSession(models.Model):
     class Meta:
         managed = False
         db_table = 'django_session'
+
+class banddata(models.Model):
+    username = models.TextField(null=False)
+    password = models.TextField(null=False)
+    male = models.TextField(null=True)
+    female = models.TextField(null=True)
+    data_time = models.TextField(null=True)
+    userid = models.IntegerField(null=True)
+    heart_recordnum = models.IntegerField(null=True)
+    heart_max = models.IntegerField(null=True)
+    heart_min = models.IntegerField(null=True)
+    heart_total = models.IntegerField(null=True)
+    sleep_deepsleeptime = models.IntegerField(null=True)
+    sleep_lightsleeptime = models.IntegerField(null=True)
+    sleep_awaketime = models.IntegerField(null=True)
+    sleep_score = models.FloatField(null=True)
+    sleep_waketimes = models.IntegerField(null=True)
+    activity_totalsteps = models.IntegerField(null=True)
+    activity_totalcalories = models.IntegerField(null=True)
+    activity_totaldistances = models.IntegerField(null=True)
+    activity_moststeps = models.IntegerField(null=True)
+    sh150_light = models.IntegerField(null=True)
+    sh150_moderate = models.IntegerField(null=True)
+    sh150_vigorous = models.IntegerField(null=True)
+    hasvalue = models.IntegerField(null=True)
+
+    
+
+class table001(models.Model):
+    username = models.TextField(max_length=50, null=False)
+    password = models.TextField(max_length=100, null=False)
+    heart_rate = models.IntegerField(null=True)
+    sleep_rate = models.FloatField(null=True)

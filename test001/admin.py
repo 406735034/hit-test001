@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Bandsdata
+from .models import banddata
 # Register your models here.
 
-admin.site.register(Bandsdata)
+admin.site.register(banddata)

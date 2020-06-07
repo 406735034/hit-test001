@@ -56,7 +56,42 @@
   <section id="posts">
     <div class="container" style="padding-top: 60px;">
       <div class="row">
-        
+        <div class="col-md-12" style="padding-top: 30px;">
+            <div class="card">
+              <div class="card-header">
+                <h2 style="text-align: center;"> Total Students : {{datas|length}}</h2>
+                <h4>Latest Posts</h4>
+              </div>
+              
+             
+              <table class="table table-striped">
+                <thead class="thead-dark">
+                  <tr>
+                    <th>#</th>
+                    <th>Username</th>
+                    <th>Password</th>
+                    <th>Heartrate</th>
+                    <th>Sleep Score</th>
+                  </tr>
+                </thead>
+                <tbody>
+  
+                 
+                  {%for data in datas%}  
+                   
+                  <tr>
+                    <td>{{data.id}}</td>
+                    <td>{{data.username}}</td>
+                    <td>{{data.password}}</td>
+                    <td>{{data.heart_total}}</td>
+                    <td>{{data.sleep_score}}</td>
+                  </tr>
+                  
+                 {%endfor%}
+                </tbody>
+              </table>
+            </div>
+          </div>
 
         
         

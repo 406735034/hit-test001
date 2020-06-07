@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '2oq#)x6g5)5k72m=^va5*m4*2ol=1_3zse^q6^)_82^q@z&5+z'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['hit-test001.herokuapp.com/', '127.0.0.1', 'localhost']
 
@@ -76,8 +76,12 @@ WSGI_APPLICATION = 'HitProject.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'test',
+        'USER': 'root',
+        'PASSWORD' : '0000',
+        'HOST': 'localhost',
+        'PORT': '3310'
     }
 }
 
