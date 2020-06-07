@@ -1,0 +1,44 @@
+body {
+   
+    background:#e74c3c;   
+    background: linear-gradient(90deg, #7d5fff 0%, #c56cf0 35%, #32ff7e 100%); 
+       
+}
+
+.wrapper {
+    background: linear-gradient(90deg,  #7d5fff 0%,#c56cf0 35%, #32ff7e 100%); 
+    padding-top: 0;
+}
+
+.navbar-brand img {
+    height: 300px;
+    width: auto;
+    padding-left: 80px;
+}
+
+.navbar {
+    background:#e74c3c;
+    background: linear-gradient(90deg, #7d5fff 0%, #c56cf0 35%, #32ff7e 100%);
+      
+
+}
+
+.db {
+    font-family: sans-serif;
+    color: honeydew;
+    font-size: 1.5rem;
+    font-weight: 100;
+    font-style: italic;
+    text-align: center;
+
+}
+
+.banner img{
+    height: 100%;
+    width: 100%;
+}
+
+.message{
+    text-align: center;
+    
+}
