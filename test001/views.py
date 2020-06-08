@@ -12,7 +12,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
 from .models import *
-from .forms import RegisterForm
+from .forms import RegisterForm, ResetForm
 
 # Create your views here.
 
@@ -64,3 +64,4 @@ def register(request):
 def dashboard(request):
     data = banddata.objects.all()
     return render(request, 'home.html', {'datas': data})
+

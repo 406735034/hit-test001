@@ -42,3 +42,9 @@ body {
     text-align: center;
     
 }
+
+.titles{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-family: cursive;
+}
