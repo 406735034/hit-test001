@@ -72,28 +72,29 @@
         <!-- ============================================================== -->
         <!-- Preloader - style you can find in spinners.css -->
         <!-- ============================================================== -->
-        <!-- <div class="preloader">
+        <div class="preloader">
             <div class="lds-ripple">
                 <div class="lds-pos"></div>
                 <div class="lds-pos"></div>
             </div>
-        </div> -->
+        </div>
         <!-- ============================================================== -->
         <!-- Preloader - style you can find in spinners.css -->
         <!-- ============================================================== -->
         <!-- ============================================================== -->
         <!-- Login box.scss -->
         <!-- ============================================================== -->
-        <div class="auth-wrapper d-flex no-block justify-content-center align-items-center" style="padding-top: 150px;" >
+        <div class="auth-wrapper d-flex no-block justify-content-center align-items-center p-t-40 m-t-40" >
             <div class="auth-wrapper border-top border-secondary " >
                 <div class="loginform">
-                    <div class="text-center p-t-20 p-b-20  bg-dark">
-                        <span class="db"><i class="fas fa-user"></i>&nbsp HIT User Login</span>
-                    </div>
+                    
                     <!-- Form -->
                     <form class="form-horizontal m-t-20 " id="loginform" action="" method="POST">
                         {%csrf_token%}
-                        <div class="row p-b-30">
+                        <div class="text-center p-b-20 p-t-20 bg-dark">
+                            <span class="db">&nbsp &nbsp<i class="fas fa-user"></i>&nbsp HIT User Login &nbsp &nbsp</span>
+                        </div>
+                        <div class="row p-b-30 p-t-20">
                             <div class="col-12">
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
@@ -124,7 +125,10 @@
                         </div>
                     </form>
                 </div>
-                <div id="recoverform">
+                <div id="recoverform" class="p-t-20 p-b-20">
+                    <div class="text-center p-t-20 p-b-20  bg-dark">
+                        <span class="db"><i class="fas fa-user"></i>&nbsp Password Recovery</span>
+                    </div>
                     <div class="text-center">
                         <span class="text-white">Enter your e-mail address below and we will send you instructions how to recover a password.</span>
                     </div>
@@ -171,6 +175,7 @@
     <!-- All Required js -->
     <!-- ============================================================== -->
     <script src="{% static 'js/jquery-3.3.1.js' %}"></script>
+    <script src="{% static 'js/jquery-ui.js'%}"></script>
     <!-- Bootstrap tether Core JavaScript -->
     <script src="{% static 'assets/libs/popper.js/dist/umd/popper.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.min.js ' %}"></script>
