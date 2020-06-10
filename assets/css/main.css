@@ -43,8 +43,9 @@ body {
     
 }
 
-.login-title{
-    padding-top: 20px;
-    padding-bottom: 20px;
+.titles{
+    padding-top: 10px;
+    padding-bottom: 10px;
     font-family: cursive;
 }
+

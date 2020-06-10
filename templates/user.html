@@ -1,0 +1,13 @@
+{% extends 'base.html'%}
+    {% block content %}
+    {%load static%}
+    <div class=" d-flex justify-content-center align-items-center">
+     <a href="#" class="nav-link"> Hello, {{request.user}}! </a>
+                
+                
+                    <a class="nav-link" href="{% url 'logout' %}"><i class="fas fa-user"></i> Logout</a>
+                
+        
+    </div>
+        <div class="text-center"><h1>This is User Home Page</h1></div>
+    {%endblock%}
