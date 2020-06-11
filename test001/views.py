@@ -63,11 +63,16 @@ def register(request):
 @login_required(login_url='login')
 @admin_only
 def dashboard(request):
-    data = banddata.objects.all()
-    return render(request, 'home.html', {'datas': data, 'name': 'Test'})
+    data = banddata.objects.filter(male='Yes')
+    return render(request, 'home.html', {'datas': data})
 
 @login_required(login_url='login')
 @allowed_users(allowed_roles=['admins','Students'])
 def userPage(request):
     context = {}
     return render(request, 'user.html', context)
+
+@login_required(login_url='login')
+def restrict(request):
+    
+    return render(request,'restrict.html')

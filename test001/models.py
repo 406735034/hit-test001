@@ -1,12 +1,6 @@
-# This is an auto-generated Django model module.
-# You'll have to do the following manually to clean this up:
-#   * Rearrange models' order
-#   * Make sure each model has one field with primary_key=True
-#   * Make sure each ForeignKey and OneToOneField has `on_delete` set to the desired behavior
-#   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
-# Feel free to rename the models, but don't rename db_table values or field names.
-from django.db import models
 
+from django.db import models
+from django.utils.timezone import timezone
 
 class AuthGroup(models.Model):
     name = models.CharField(unique=True, max_length=150)
@@ -117,6 +111,12 @@ class DjangoSession(models.Model):
         managed = False
         db_table = 'django_session'
 
+class Tag(models.Model):
+    name=models.CharField(max_length=200, null=True)
+
+    def __str__(self):
+        return self.name
+
 class banddata(models.Model):
     username = models.TextField(null=False)
     password = models.TextField(null=False)
@@ -141,11 +141,55 @@ class banddata(models.Model):
     sh150_moderate = models.IntegerField(null=True)
     sh150_vigorous = models.IntegerField(null=True)
     hasvalue = models.IntegerField(null=True)
+    tags = models.ManyToManyField(Tag)
+
+    def __str__(self):
+        return self.username
 
     
 
-class table001(models.Model):
-    username = models.TextField(max_length=50, null=False)
-    password = models.TextField(max_length=100, null=False)
-    heart_rate = models.IntegerField(null=True)
-    sleep_rate = models.FloatField(null=True)
+
+class Contact(models.Model):
+    name = models.CharField(max_length=200, null=True)
+    phone = models.CharField(max_length=20, null=True)
+    email = models.EmailField(null=True)
+    address = models.TextField(max_length=250, null=True)
+
+    def __str__(self):
+        return self.name
+
+
+class Reward(models.Model):
+    name = models.CharField(max_length=200, null=True)
+    points = models.IntegerField(null=True)
+    gold = models.IntegerField(null=True)
+    gems = models.IntegerField(null=True)
+    expire_date= models.DateField(null=True)
+    created = models.DateField(auto_now_add=True, null=True)
+    font_size = models.IntegerField()
+
+    def __str__(self):
+        return self.name
+    
+    def body_preview(self):
+        return self.body[:50]
+
+
+
+class Workout(models.Model):
+    STATUS = (
+        ('active','active'),
+        ('used','used'),
+        ('expired','expired')
+    )
+    banddata = models.ForeignKey(banddata, null=True, on_delete= models.SET_NULL)
+    reward =models.ForeignKey(Reward, null=True, on_delete= models.SET_NULL)
+    date_created = models.DateField(auto_now_add=True, null=True)
+    status = models.CharField(max_length=20, choices=STATUS)
+
+class Tamkang(models.Model):
+    building = models.TextField(max_length=100, null=True)
+    branches = models.TextField(max_length=100,null=True)
+
+    def __str__(self):
+        return self.building

@@ -21,25 +21,24 @@
                   <tr>
                     <th>#</th>
                     <th>Username</th>
-                    <th>Password</th>
+                    <th>User ID</th>
                     <th>Heartrate</th>
                     <th>Sleep Score</th>
                   </tr>
                 </thead>
-                <tbody>
-  
+                <tbody>  
                  
-                  <!-- {for data in datas%}   -->
+                  {%for data in datas%}  
                    
                   <tr>
-                    <td>{{name}}</td>
-                    <td>{{name}}</td>
-                    <td>{{name}}</td>
-                    <td>{{name}}</td>
-                    <td>{{name}}</td>
+                    <td>{{data.id}}</td>
+                    <td>{{data.username}}</td>
+                    <td>{{data.userid}}</td>
+                    <td>{{data.heart_total}}</td>
+                    <td>{{data.sleep_score}}</td>
                   </tr>
                   
-                 <!-- {%endfor} -->
+                 {%endfor%}
                 </tbody>
               </table>
             </div>

@@ -19,4 +19,6 @@ urlpatterns = [
     path('dashboard/', views.dashboard, name='dashboard'),
     path('user/', views.userPage, name='user-page'),
     
+    #Warnings
+    path('restrict/', views.restrict, name='restrict'),
 ]
