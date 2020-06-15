@@ -6,6 +6,7 @@ from django.http import HttpResponseRedirect
 from django.utils.html import format_html
 
 admin.site.site_header = 'Hit Project Dashboard'
+admin.site.site_title = 'Hit Project'
 
 class RewardAdmin(admin.ModelAdmin):
     list_display = ('name','font_size_html_display', 'created')

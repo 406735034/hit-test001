@@ -1,0 +1,258 @@
+@charset "UTF-8";
+
+@font-face{
+  font-family: 'cfont';
+  src: url(/static/fonts/myfont.ttf);
+  font-style: normal;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+}
+
+.main-container {
+  font-family: 'cfont';
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+  width: 85%;
+  margin-left: 7.5%;
+  margin-top: 0;
+ 
+}
+.sidebar {
+  margin-left: 2%;
+  width: 23%;
+  height: 78vh;
+  float: left;
+  box-sizing: border-box;
+}
+
+.sidebar-top {
+  width: 100%;
+  height: 310px;
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.sidebar-top .sidebar-list {
+  width: 230px;
+  height: 310px;
+ 
+}
+.sidebar-top .sidebar-list h3 {
+  color: #006266;
+  width: 100%;
+  border: 2px solid #006266;
+  border-radius: 30px;
+  text-align: center;
+  padding: 5px 0;
+  font-size: 1.4em;
+  margin-bottom: 20px;
+  font-weight: 700;
+  background-color: thistle;
+}
+.sidebar-top .sidebar-list ul li {
+  margin-top: 10px;
+  width: 100%;
+  align-items: center;
+  list-style: none;
+       
+}
+
+.btn {  
+  
+  width: 100%;
+  font-size: 1.2em;
+  text-decoration: none;
+  list-style: none;
+  border: 2px solid #006266;
+  height: 40px;
+  text-align: center;
+  border-radius: 20px;
+  color: black;
+  font-weight: 600;
+  background-color: #81ecec;
+  vertical-align: middle;
+  margin-bottom: 2px;
+  padding-top: 1px;
+  font-size: 1.4em;
+}
+
+.active, .btn:hover{
+  background-color: #353b48;
+  color: #fff;
+  text-decoration: none;
+}
+
+.sidebar-bottom {
+  padding: 15px 20px;
+  margin-top: 20px;
+  height: 120px;
+  border: 1px solid gray;
+  border-radius: 10px;
+}
+.main-column {
+  margin-left: 1%;
+  width: 48%;
+  border: 1px solid gray;
+  height: 450px;
+  float: left;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.right-column {
+  width: 25%;
+  height: 78vh;
+
+  float: right;
+  border-radius: 20px;
+  box-sizing: border-box;
+}
+.title-block {
+  height: 45px;
+  width: 100%;
+}
+.title-block h3 {
+  margin-left: 15%;
+  margin-right: 15%;
+  color: #006266;
+  border: 0px solid black;
+  border-radius: 20px;
+  padding: 10px;
+  padding-top: 4px;
+  text-align: center;
+  font-size: 1.6em;
+  font-weight: 900;
+  border: 2px solid #006266;
+  transition-duration: 1s;
+  background-color: thistle;
+}
+
+.stat-block {
+  margin-top: 1%;
+  height: 170px;
+  width: 100%;
+  background-color: lightblue;
+}
+.stat-block1 {
+  float: left;
+  width: 25%;
+  height: 170px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  box-sizing: border-box;
+}
+.btn-block {
+  margin-top: 10px;
+  height: 100px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  
+}
+.btn-block h1 {
+  padding-top: 15px;
+  background-color: khaki;
+  font-size: 3.5em;
+  text-align: center;
+  border: 2px solid blue;
+  height: 95px;
+  color: blue;
+  border-radius: 40px 40px 40px 40px;
+  transition-duration: 1s;
+}
+.btn-block h1:hover {
+  border: 2px solid black;
+  color: white;
+  background-color: brown;
+  transition: ease;
+  border-radius: 0px 0px 0px 0px;
+  transform: scale(1.02);
+  transition-duration: 1s;
+  cursor: pointer;
+}
+.lesson-block {
+  width: 90%;
+  height: 110px;
+  margin-left: 5%;
+  margin-top: 5px;
+  padding-left: 3%;
+}
+.row {
+  height: 50%;
+  width: 104%;
+}
+.les-block {
+  float: left;
+  width: 50%;
+  height: 100%;
+  border: 1px solid black;
+  box-sizing: border-box;
+  background-color: coral;
+  text-align: center;
+  color: lawngreen;
+  font-weight: 600;
+  font-size: 25px;
+  padding-top: 6px;
+  transition-duration: 2s;
+}
+.les-block:hover {
+  background-color: darkblue;
+  color: white;
+  cursor: pointer;
+}
+.one {
+  border-radius: 30px 0px 10px 0px;
+}
+.two {
+  border-radius: 0px 30px 0px 10px;
+}
+.three {
+  border-radius: 0px 10px 0px 30px;
+}
+.four {
+  border-radius: 10px 0px 30px 0px;
+}
+
+.user-pic {
+  width: 80%;
+  margin-left: 10%;
+  height: 230px;
+  box-sizing: border-box;
+  display: block;
+  display: flex;
+  flex-direction: column;
+}
+
+.user-pic img {
+  height: 100px;
+  width: 100px;
+  margin: 5px 50px;
+  align-self: center;
+}
+.user-pic h5 {
+  color: #34495e;
+  text-align: center;
+  font-size: 25px;
+}
+.user-pic p {
+  margin-top: -5px;
+  text-align: center;
+  color: #3b3b98;
+  font-size: 1.1em;
+  font-weight: 600;
+  line-height: 0.8;
+}
+
+.charts {
+  width: 100%;
+  height: 220px;
+  box-sizing: border-box;
+  border: 1px solid red;
+}

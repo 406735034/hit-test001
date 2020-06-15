@@ -1,51 +1,56 @@
 body {
-   
-    background:#e74c3c;   
-    background: linear-gradient(90deg, #7d5fff 0%, #c56cf0 35%, #32ff7e 100%); 
-       
+  background: #e74c3c;
+  background: linear-gradient(90deg, #7d5fff 0%, #c56cf0 35%, #32ff7e 100%);
 }
 
 .wrapper {
-    background: linear-gradient(90deg,  #7d5fff 0%,#c56cf0 35%, #32ff7e 100%); 
-    padding-top: 0;
+  background: linear-gradient(90deg, #7d5fff 0%, #c56cf0 35%, #32ff7e 100%);
+  padding-top: 0;
 }
 
 .navbar-brand img {
-    height: 80px;
-    width: auto;
-    padding-left: 80px;
+  height: 60px;
+  width: auto;
+  padding-left: 40px;
 }
 
 .navbar {
-    background:#e74c3c;
-    background: linear-gradient(90deg, #7d5fff 0%, #c56cf0 35%, #32ff7e 100%);
-      
-
+  background: #e74c3c;
+  background: linear-gradient(90deg, #7d5fff 0%, #c56cf0 35%, #32ff7e 100%);
 }
 
 .db {
-    font-family: sans-serif;
-    color: honeydew;
-    font-size: 1.5rem;
-    font-weight: 100;
-    font-style: italic;
-    text-align: center;
-
+  font-family: sans-serif;
+  color: honeydew;
+  font-size: 1.5rem;
+  font-weight: 100;
+  font-style: italic;
+  text-align: center;
 }
 
-.banner img{
-    height: 100%;
-    width: 100%;
+.banner img {
+  height: 100%;
+  width: 100%;
 }
 
-.message{
-    text-align: center;
-    
+.message {
+  text-align: center;
 }
 
-.titles{
-    padding-top: 10px;
-    padding-bottom: 10px;
-    font-family: cursive;
+.titles {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-family: cursive;
 }
-
+.footer {
+  height: 80px;
+  width: 100%;
+  background: linear-gradient(90deg, #7d5fff 0%, #c56cf0 35%, #32ff7e 100%);
+  color: white;
+  text-align: center;
+  font-weight: 600;
+  padding-top: 20px;
+  font-size: 1em;
+  position: fixed;
+  bottom: 0;
+}
