@@ -51,6 +51,7 @@
   flex-direction: column;
   position: relative;
   align-items: center;
+  justify-content: space-evenly;
 }
 
 .sidebar-top h3 {
@@ -67,11 +68,12 @@
   background-color: thistle;
   
 }
+
 .sidebar-top ul li {
   margin-top: 13px;
   width: 250px;
   list-style: none;
-  text-align: center;
+  
 }
 
 .btn {
@@ -81,14 +83,14 @@
   list-style: none;
   border: 2px solid #006266;
   height: 40px;
-  text-align: center;
+  text-align: left;
   border-radius: 10px;
   color: black;
   font-weight: 600;
   background-color: #81ecec;
   vertical-align: middle;
   margin-bottom: 2px;
-  padding-top: 1px;
+  padding: 1px 60px;
   font-size: 1.4em;
 }
 
