@@ -1,70 +1,80 @@
 @charset "UTF-8";
 
-@font-face{
+@font-face {
   font-family: 'cfont';
   src: url(/static/fonts/myfont.ttf);
   font-style: normal;
 }
 
-*{
+* {
   margin: 0;
   padding: 0;
 }
 
 .main-container {
   font-family: 'cfont';
-  display: flex;
-  flex-direction: row;
-  box-sizing: border-box;
-  width: 85%;
-  margin-left: 7.5%;
-  margin-top: 0;
- 
-}
-.sidebar {
-  margin-left: 2%;
-  width: 23%;
-  height: 78vh;
-  float: left;
-  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 10px;
+  width: 99%;
+  align-items: center;
+  justify-content: center;
+  height: 500px;
 }
 
+.main-container > div {
+  height: 500px;
+  background: transparent;
+  align-items: center;
+  position: static;
+
+  /* background: url(/static/images/user-bg.jpg); */
+  background-size: cover;
+  background-attachment: fixed;
+}
+.main-container > div:nth-of-type(1) {
+  grid-column: 1/2;
+  margin-left: 3%;
+}
+.main-container > div:nth-of-type(2) {
+  grid-column: 2/4;
+}
+
+.main-container > div:nth-of-type(3) {
+  grid-column: 4/5;
+  
+}
 .sidebar-top {
   width: 100%;
-  height: 310px;
-  border-radius: 25px;
+  height: 330px;
   display: flex;
   flex-direction: column;
   position: relative;
+  align-items: center;
 }
 
-.sidebar-top .sidebar-list {
-  width: 230px;
-  height: 310px;
- 
-}
-.sidebar-top .sidebar-list h3 {
+.sidebar-top h3 {
   color: #006266;
-  width: 100%;
+  width: 280px;
+  margin: 5px 0;
   border: 2px solid #006266;
-  border-radius: 30px;
+  border-radius: 10px;
   text-align: center;
   padding: 5px 0;
   font-size: 1.4em;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   font-weight: 700;
   background-color: thistle;
+  
 }
-.sidebar-top .sidebar-list ul li {
-  margin-top: 10px;
-  width: 100%;
-  align-items: center;
+.sidebar-top ul li {
+  margin-top: 13px;
+  width: 250px;
   list-style: none;
-       
+  text-align: center;
 }
 
-.btn {  
-  
+.btn {
   width: 100%;
   font-size: 1.2em;
   text-decoration: none;
@@ -72,7 +82,7 @@
   border: 2px solid #006266;
   height: 40px;
   text-align: center;
-  border-radius: 20px;
+  border-radius: 10px;
   color: black;
   font-weight: 600;
   background-color: #81ecec;
@@ -82,7 +92,8 @@
   font-size: 1.4em;
 }
 
-.active, .btn:hover{
+.active,
+.btn:hover {
   background-color: #353b48;
   color: #fff;
   text-decoration: none;
@@ -91,29 +102,19 @@
 .sidebar-bottom {
   padding: 15px 20px;
   margin-top: 20px;
-  height: 120px;
+  height: 150px;
   border: 1px solid gray;
   border-radius: 10px;
 }
 .main-column {
-  margin-left: 1%;
-  width: 48%;
+  padding: 3px 5px;
   border: 1px solid gray;
-  height: 450px;
-  float: left;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
-.right-column {
-  width: 25%;
-  height: 78vh;
-
-  float: right;
-  border-radius: 20px;
-  box-sizing: border-box;
-}
 .title-block {
   height: 45px;
   width: 100%;
@@ -122,38 +123,26 @@
   margin-left: 15%;
   margin-right: 15%;
   color: #006266;
-  border: 0px solid black;
   border-radius: 20px;
-  padding: 10px;
+  padding: 5px 10px;
   padding-top: 4px;
   text-align: center;
   font-size: 1.6em;
   font-weight: 900;
   border: 2px solid #006266;
+
   transition-duration: 1s;
   background-color: thistle;
 }
 
-.stat-block {
-  margin-top: 1%;
-  height: 170px;
-  width: 100%;
-  background-color: lightblue;
-}
-.stat-block1 {
-  float: left;
-  width: 25%;
-  height: 170px;
-  border: 1px solid #ccc;
-  padding: 10px;
-  box-sizing: border-box;
-}
 .btn-block {
-  margin-top: 10px;
-  height: 100px;
-  width: 100%;
+  position: relative;
+  height: 80px;
+  width: 85%;
   align-items: center;
   justify-content: center;
+  margin-bottom: 10px;
+  background: transparent;
   
 }
 .btn-block h1 {
@@ -164,43 +153,45 @@
   border: 2px solid blue;
   height: 95px;
   color: blue;
-  border-radius: 40px 40px 40px 40px;
+  border-radius: 20px;
   transition-duration: 1s;
 }
-.btn-block h1:hover {
+.btn-block :hover {
   border: 2px solid black;
   color: white;
   background-color: brown;
-  transition: ease;
-  border-radius: 0px 0px 0px 0px;
-  transform: scale(1.02);
-  transition-duration: 1s;
+  transition: 1s ease-in-out;
+  border-radius: 0px 90px 0px 90px;
   cursor: pointer;
+  transform: translateY(-20px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+  transition: 0.5s;
+  font-family: Arial, Helvetica, sans-serif;
 }
 .lesson-block {
+  position: relative;
   width: 90%;
   height: 110px;
-  margin-left: 5%;
-  margin-top: 5px;
+  margin-top: 15px;
   padding-left: 3%;
+  display: grid;
+  grid-template-columns: 2fr 2fr;
+  grid-gap: 2px;
+  align-items: center;
+  justify-content: center;
 }
-.row {
-  height: 50%;
-  width: 104%;
-}
+
 .les-block {
-  float: left;
-  width: 50%;
+  position: relative;
+  margin: 0;
+  padding: 0;
   height: 100%;
-  border: 1px solid black;
-  box-sizing: border-box;
+  width: 100%;
   background-color: coral;
   text-align: center;
-  color: lawngreen;
-  font-weight: 600;
-  font-size: 25px;
-  padding-top: 6px;
-  transition-duration: 2s;
+  font-size: 30px;
+  transition: 1s ease-in-out;
+ 
 }
 .les-block:hover {
   background-color: darkblue;
@@ -220,16 +211,19 @@
   border-radius: 10px 0px 30px 0px;
 }
 
+.right-column {
+  padding: 3px 5px;
+  position: relative;
+  width: 100%;
+}
+
 .user-pic {
-  width: 80%;
-  margin-left: 10%;
-  height: 230px;
+  position: relative;
+  height: 250px;
   box-sizing: border-box;
-  display: block;
   display: flex;
   flex-direction: column;
 }
-
 .user-pic img {
   height: 100px;
   width: 100px;
@@ -251,8 +245,166 @@
 }
 
 .charts {
+  position: relative;
   width: 100%;
-  height: 220px;
+  height: 250px;
   box-sizing: border-box;
   border: 1px solid red;
+}
+
+/* Progress Bar Styling */
+.stat-block {
+  margin-top: 1%;
+  height: 220px;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  object-fit: cover;
+}
+.prog-container {
+  position: relative;
+  width: 100%;
+  height: 170px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 2px;
+  object-fit: cover;
+  /* display: flex;
+  justify-content: space-evenly; */
+}
+
+.prog-container .card{
+  width: 100%;
+  position: relative;
+  align-items: center;
+  display: flex;
+  height: 210px;
+  background: transparent;
+  border: none;
+  object-fit: scale-down;
+  overflow: hidden;
+
+}
+
+.prog-container .card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+  transition: 0.5s;
+}
+
+.percent {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  box-shadow: inset 0 0 50px #222;
+  background: #d4f3ef;
+  z-index: 1000;
+}
+.percent .number {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+
+.percent .number h4 {
+  color: #777;
+  font-size: 40px;
+  font-weight: 700;
+  transition: 0.5s;
+}
+
+.card:hover .percent .number h4 {
+  color: #222;
+  font-size: 55px;
+}
+
+.percent .number h4 span {
+  font-size: 30px;
+}
+
+.card:hover .percent .number h4 span {
+  font-size: 40px;
+  color: #222;
+  transition: 0.5s;
+}
+.text {
+  position: relative;
+  height: 45px;
+  display: center;
+  color: #777;
+  margin-top: 10px;
+  font-weight: 700;
+  text-align: center;
+  letter-spacing: 2px;
+  font-size: 45px;
+  transition: 0.5s ease;
+}
+
+.card:hover #sleep {
+  color: #3498db;
+  font-size: 25px;
+}
+
+svg {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  z-index: 1000;
+}
+
+svg circle {
+  height: 100%;
+  width: 100%;
+  fill: none;
+  stroke: #485460;
+  stroke-width: 10;
+  stroke-linecap: 10;
+  transform: translate(5px, 5px);
+  transition: 2s ease-out;
+  
+}
+
+svg circle:nth-child(2) {
+  stroke-dasharray: 440;
+  stroke-dashoffset: 440;
+}
+
+#one {
+  stroke: #00ff43;
+}
+#two {
+  stroke: #00a1ff;
+}
+#three {
+  stroke: #ff04f7;
+}
+#four {
+  stroke: #e67e22;
+}
+.card:hover #sleep {
+  color: #00ff43;
+  font-size: 25px;
+  text-shadow: 2px 1px #222;
+}
+.card:hover #walk {
+  color: #00a1ff;
+  font-size: 25px;
+  text-shadow: 2px 1px #222;
+}
+.card:hover #workout {
+  color: #ff04f7;
+  font-size: 25px;
+  text-shadow: 2px 1px #222;
+}
+.card:hover #calory {
+  color: #e67e22;
+  font-size: 25px;
+  text-shadow: 2px 1px #222;
 }

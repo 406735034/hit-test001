@@ -18,9 +18,12 @@ from .forms import RegisterForm, ResetForm
 from .decorators import unauthenticated_user, allowed_users, admin_only
 
 # Create your views here.
+
+
 @unauthenticated_user
 def home(request):
     return render(request, 'index.html')
+
 
 @unauthenticated_user
 def loginPage(request):
@@ -32,14 +35,16 @@ def loginPage(request):
 
         if user is not None:
             login(request, user)
-            return redirect ('dashboard')
+            return redirect('dashboard')
         else:
             messages.info(request, 'Username or Password incorrect .... !!!!')
     return render(request, 'login.html')
 
+
 def logoutUser(request):
     logout(request)
     return redirect('login')
+
 
 @unauthenticated_user
 def register(request):
@@ -52,13 +57,13 @@ def register(request):
             group = Group.objects.get(name='Students')
             user.groups.add(group)
             username = form.cleaned_data.get('username')
-            messages.success(request,'Account Created for ' + username)
+            messages.success(request, 'Account Created for ' + username)
         else:
             messages.error(request, 'Error')
-        
-        
+
     context = {'form': form}
     return render(request, 'register.html', context)
+
 
 @login_required(login_url='login')
 @admin_only
@@ -66,13 +71,16 @@ def dashboard(request):
     data = banddata.objects.filter(male='Yes')
     return render(request, 'home.html', {'datas': data})
 
+
 @login_required(login_url='login')
-@allowed_users(allowed_roles=['admins','Students'])
+@allowed_users(allowed_roles=['admins', 'Students'])
 def userPage(request):
-    context = {}
+    percentage = [55, 90, 20, 30]
+    context = {'percent': percentage}
     return render(request, 'user.html', context)
+
 
 @login_required(login_url='login')
 def restrict(request):
-    
-    return render(request,'restrict.html')
+
+    return render(request, 'restrict.html')

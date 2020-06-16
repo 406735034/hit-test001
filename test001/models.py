@@ -1,6 +1,6 @@
-
 from django.db import models
 from django.utils.timezone import timezone
+
 
 class AuthGroup(models.Model):
     name = models.CharField(unique=True, max_length=150)
@@ -42,6 +42,7 @@ class AuthUser(models.Model):
     is_active = models.BooleanField()
     date_joined = models.DateTimeField()
     last_name = models.CharField(max_length=150)
+    gender = models.BooleanField()
 
     class Meta:
         managed = False
@@ -73,7 +74,8 @@ class DjangoAdminLog(models.Model):
     object_id = models.TextField(blank=True, null=True)
     object_repr = models.CharField(max_length=200)
     change_message = models.TextField()
-    content_type = models.ForeignKey('DjangoContentType', models.DO_NOTHING, blank=True, null=True)
+    content_type = models.ForeignKey(
+        'DjangoContentType', models.DO_NOTHING, blank=True, null=True)
     user = models.ForeignKey(AuthUser, models.DO_NOTHING)
     action_flag = models.PositiveSmallIntegerField()
 
@@ -111,11 +113,13 @@ class DjangoSession(models.Model):
         managed = False
         db_table = 'django_session'
 
+
 class Tag(models.Model):
-    name=models.CharField(max_length=200, null=True)
+    name = models.CharField(max_length=200, null=True)
 
     def __str__(self):
         return self.name
+
 
 class banddata(models.Model):
     username = models.TextField(null=False)
@@ -146,8 +150,6 @@ class banddata(models.Model):
     def __str__(self):
         return self.username
 
-    
-
 
 class Contact(models.Model):
     name = models.CharField(max_length=200, null=True)
@@ -164,32 +166,33 @@ class Reward(models.Model):
     points = models.IntegerField(null=True)
     gold = models.IntegerField(null=True)
     gems = models.IntegerField(null=True)
-    expire_date= models.DateField(null=True)
+    expire_date = models.DateField(null=True)
     created = models.DateField(auto_now_add=True, null=True)
     font_size = models.IntegerField()
 
     def __str__(self):
         return self.name
-    
+
     def body_preview(self):
         return self.body[:50]
 
 
-
 class Workout(models.Model):
     STATUS = (
-        ('active','active'),
-        ('used','used'),
-        ('expired','expired')
+        ('active', 'active'),
+        ('used', 'used'),
+        ('expired', 'expired')
     )
-    banddata = models.ForeignKey(banddata, null=True, on_delete= models.SET_NULL)
-    reward =models.ForeignKey(Reward, null=True, on_delete= models.SET_NULL)
+    banddata = models.ForeignKey(
+        banddata, null=True, on_delete=models.SET_NULL)
+    reward = models.ForeignKey(Reward, null=True, on_delete=models.SET_NULL)
     date_created = models.DateField(auto_now_add=True, null=True)
     status = models.CharField(max_length=20, choices=STATUS)
 
+
 class Tamkang(models.Model):
     building = models.TextField(max_length=100, null=True)
-    branches = models.TextField(max_length=100,null=True)
+    branches = models.TextField(max_length=100, null=True)
 
     def __str__(self):
         return self.building

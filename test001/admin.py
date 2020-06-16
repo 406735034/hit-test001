@@ -8,8 +8,9 @@ from django.utils.html import format_html
 admin.site.site_header = 'Hit Project Dashboard'
 admin.site.site_title = 'Hit Project'
 
+
 class RewardAdmin(admin.ModelAdmin):
-    list_display = ('name','font_size_html_display', 'created')
+    list_display = ('name', 'font_size_html_display', 'created')
     list_filter = ('created',)
     change_list_template = 'admin/snippets/snippets_change_list.html'
 
@@ -23,19 +24,18 @@ class RewardAdmin(admin.ModelAdmin):
     def change_font_size(self, request, size):
         self.model.objects.all().update(font_size=size)
         self.message_user(request, "font size changed!")
-        return HttpResponseRedirect ('../')
-    
+        return HttpResponseRedirect('../')
+
     def font_size_html_display(self, obj):
-        display_size = obj.font_size if obj.font_size <=30 else 30
+        display_size = obj.font_size if obj.font_size <= 30 else 30
         return format_html(
             f'<span style="font-size: {display_size}px;">{obj.font_size}</span>'
         )
+
 
 admin.site.register(banddata)
 admin.site.register(Contact)
 admin.site.register(Reward, RewardAdmin)
 admin.site.register(Tag)
 admin.site.register(Workout)
-admin.site.register(Tamkang)
-
-
+admin.site.register(AuthUser)
