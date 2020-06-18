@@ -12,7 +12,7 @@ from django.contrib.auth import authenticate, login, logout
 
 from django.contrib.auth.decorators import login_required
 
-from .models import *
+from .models import banddata
 from .forms import RegisterForm, ResetForm
 
 from .decorators import unauthenticated_user, allowed_users, admin_only
@@ -83,7 +83,8 @@ def userPage(request):
 @login_required(login_url='login')
 @allowed_users(allowed_roles=['admins', 'Students'])
 def userRecPage(request):
-    return render(request, 'user-record.html')
+    context = {'mymon': 55, 'clmon': 95}
+    return render(request, 'user-record.html', context)
 
 
 @login_required(login_url='login')

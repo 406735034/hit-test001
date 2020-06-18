@@ -1,0 +1,128 @@
+  
+  .chart{
+    width: 600px;
+    height: 300px;
+    margin-top: 15px;
+  }
+  
+  .numbers{
+    color: #333;
+    margin: 10;
+    padding: 0;
+    width: 50px;
+    height: 100%;    
+    position: absolute;
+    left: -90px;
+  }
+  
+  .numbers li{
+    list-style: none;
+    height: 100px;
+    position: relative;
+    bottom: 70px;
+    margin-left: -50px;
+  }
+  
+  .numbers span{
+    font-size: 12px;
+    font-weight: 600;
+    position: absolute;
+    bottom: 0;
+    right: 10px;
+    
+  }
+  
+  /* .bars{
+    color: #333;
+    font-size: 12px;
+    font-weight: 600;
+    background: transparent;
+    margin: 10px;
+    padding: 0;
+    display: inline-block;
+    width: 500px;
+    height: 230px;
+    box-shadow: 0 0 10px 0 #555;
+    border-radius: 5px;
+  } */
+  
+  .bars li{
+    display: table-cell;
+    width: 100px;
+    height: 300px;
+    position: relative;
+  }
+  
+  .bars span{
+    width: 100%;
+    position: absolute;
+    bottom: 60px;
+    left: -30px;
+    text-align: center;
+  }
+  
+  .bars .bar{
+    display: block;
+    background: #2980b9;
+    width: 20px;
+    position: absolute;
+    bottom: 90px;
+    margin-left: -10px;
+    text-align: center;
+    box-shadow: 2px 3px 20px 0 rgba(0, 0, 0, 0.9);
+    transition: 0.5s;
+    transition-property: background, box-shadow;
+  }
+  
+  .bars .bar:hover{
+    background:  #17C0EB;
+    box-shadow: 0 0 10px 0 rgba(85, 239, 196, 0.5);
+    cursor: pointer;
+  }
+  
+  .bars .bar:before{
+    color: #333;
+    content: attr(data-percentage) '%';
+    position: relative;
+    bottom: 20px;
+  }
+  .bars .bar2{
+    display: block;
+    background: #e67e22;
+    width: 20px;
+    position: absolute;
+    bottom: 90px;
+    margin-left: 15px;
+    text-align: center;
+    box-shadow: 2px 3px 20px 0 rgba(0, 0, 0, 0.9);
+    transition: 0.5s;
+    transition-property: background, box-shadow;
+  }
+  
+  .bars .bar2:hover{
+    background: #f1c40f;
+    box-shadow: 0 0 10px 0 rgba(85, 239, 196, 0.5);
+    cursor: pointer;
+  }
+  
+  .bars .bar2:before{
+    color: #333;
+    content: attr(data-percentage) '%';
+    position: relative;
+    bottom: 20px;
+  }
+  
+  .bar-bottom {
+      position: absolute;
+      width: 600px;
+      bottom: 70px;
+      left: -35px;
+      color: #333;
+      border: 2px solid #333333;
+  }
+  .vertical-line{
+      position: absolute;
+      border-left: 4px solid #333;
+      height: 210px;
+      left: -35px;
+  }

@@ -561,18 +561,29 @@ svg circle:nth-child(2) {
   padding: 0;
   position: relative;
  align-items: center;
- display: flex;
- flex-direction: column;
+ text-align: center;
+
 }
+.graph-block{
+  display: block;
+  height: 300px;
+  
+  border: 1px solid green;
+}
+.average-block{
+  height: 200px;
+  border: 1px solid red;
+}
+
 .rec-title {
-  align-items: center;
-  text-align: center;
-  justify-content: center;
+  position: relative;
+  margin-left:300px;
+  margin-top: 5px;
 }
 .rec-block .rec-title h3{
   border-bottom: 1px solid blue;
   box-shadow: 0 1px 0 red;
-  width: 600px;
+  width: 500px;
   text-align: center;
   align-items: center;
 }
@@ -633,3 +644,4 @@ svg circle:nth-child(2) {
     transform: rotateY(360deg);
   }
 }
+
