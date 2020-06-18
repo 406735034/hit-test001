@@ -1,0 +1,98 @@
+{% extends 'base.html'%} {% block content %} {%load static%}
+<link rel="stylesheet" type="text/css" href="{%static 'css/user.css' %}" />
+<div class="main-container">
+  <div class="sidebar">
+    <div class="sidebar-top">
+      <h3>頁面選擇清單</h3>
+      <ul>
+        <li><a href="{%url 'user-page'%}" class="btn"><i class="fas fa-home">&nbsp;</i> 主頁面 </a></li>
+        <li><a href="{%url 'user-rec'%}" class="btn"> <i class="fas fa-calendar-plus">&nbsp;</i>資料紀錄 </a></li>
+        <li><a href="{%url 'user-awards'%}" class="btn active"><i class="fas fa-shield-alt"></i> 我的徽章</a></li>
+        <li><a href="{%url 'user-ranks'%}" class="btn"><i class="fas fa-trophy">&nbsp;</i> 排行榜 </a></li>
+        <li><a href="{%url 'logout'%}" class="btn"><i class="fas fa-sign-out-alt"></i> 登出系統 </a></li>
+      </ul>
+    </div>
+    <hr class="solid divider">
+    <div class="sidebar-bottom">
+      <h4>每日任務清單</h4>
+      <ul>
+        <li>
+          <label class="container">1. 睡覺滿六小時 &nbsp; &nbsp;
+            <input type="checkbox" checked="checked"> 
+            <span class="checkmark"></span>
+          </label>
+          </li>
+          <li>
+            <label class="container">2. 運動滿一小時 &nbsp; &nbsp;
+              <input type="checkbox" checked="checked">
+              <span class="checkmark"></span>
+            </label>
+            </li>
+            <li>
+              <label class="container">3. 步行滿三千步 &nbsp; &nbsp;
+                <input type="checkbox" checked="checked">
+                <span class="checkmark"></span>
+              </label>
+              </li>
+        
+      </ul>
+    </div>
+  </div>
+  <div class="main-block">
+  <div class="main-column">
+    <div class="title-block">
+      <h3>我的徽章</h3>
+    <div class="awards">
+      <div class="award-items"><img src="{%static '/images/main/award1.jpeg'%}" alt="" class="award-item a1"></div>
+      <div class="award-items"><img src="{%static '/images/main/award1.jpeg'%}" alt="" class="award-item a2"></div>
+      <div class="award-items"><img src="{%static '/images/main/award1.jpeg'%}" alt="" class="award-item a3"></div>
+      <div class="award-items"><img src="{%static '/images/main/award1.jpeg'%}" alt="" class="award-item a4"></div>
+      <div class="award-items"><img src="{%static '/images/main/award1.jpeg'%}" alt="" class="award-item a5"></div>
+      <div class="award-items"></div>
+      <div class="award-items"></div>
+      <div class="award-items"></div>
+      <div class="award-items"></div>
+      <div class="award-items"></div>
+      <div class="award-items"></div>
+      <div class="award-items"></div>
+    </div>  
+    </div>
+    
+  </div>
+  <div class="right-column">
+    <div class="user-pic">
+      <img src="{%static 'images/male_avatar.svg'%}" alt="" />
+
+      <h5>{{request.user.first_name}}{{request.user.last_name}}</h5>
+      <p>學生</p>
+      <p>{{data1.Gender}}</p>
+      <p>** HIT 國中 **</p>
+    </div>
+
+    <div class="charts">
+      <svg height="200" width="500">
+        <polyline points="-500,500 40,25 60,40 80,120 120,140 200,180"
+        style="fill:none;stroke:black;stroke-width:3" />
+      </svg>
+    </div>
+  </div>
+</div>
+</div>
+<script>
+  let val1 = "{{percent.0}}"
+  let val2 = "{{percent.1}}"
+  let val3 = "{{percent.2}}"
+  let val4 = "{{percent.3}}"
+  let stroke1 = document.getElementById("one")
+  let stroke2 = document.getElementById("two")
+  let stroke3 = document.getElementById("three")
+  let stroke4 = document.getElementById("four")
+  stroke1.style.strokeDashoffset = 440 - (440 * val1) / 100;
+  stroke2.style.strokeDashoffset = 440 - (440 * val2) / 100;
+  stroke3.style.strokeDashoffset = 440 - (440 * val3) / 100;
+  stroke4.style.strokeDashoffset = 440 - (440 * val4) / 100;
+
+</script>
+<script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+{%endblock%}

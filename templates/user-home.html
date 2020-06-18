@@ -1,22 +1,49 @@
 {% extends 'base.html'%} {% block content %} {%load static%}
 <link rel="stylesheet" type="text/css" href="{%static 'css/user.css' %}" />
+<div class="mother-block">
 <div class="main-container">
   <div class="sidebar">
     <div class="sidebar-top">
       <h3>頁面選擇清單</h3>
       <ul>
-        <li><a href="{%url 'home'%}" class="btn active"><i class="fas fa-home">&nbsp;</i> 主頁面 </a></li>
-        <li><a href="#" class="btn"> <i class="fas fa-calendar-plus">&nbsp;</i>資料紀錄 </a></li>
-        <li><a href="#" class="btn"><i class="fas fa-shield-alt"></i> 我的徽章</a></li>
-        <li><a href="#" class="btn"><i class="fas fa-trophy">&nbsp;</i> 排行榜 </a></li>
+        <li><a href="{%url 'user-page'%}" class="btn active"><i class="fas fa-home">&nbsp;</i> 主頁面 </a></li>
+        <li><a href="{%url 'user-rec'%}" class="btn"> <i class="fas fa-calendar-plus">&nbsp;</i>資料紀錄 </a></li>
+        <li><a href="{%url 'user-awards'%}" class="btn"><i class="fas fa-shield-alt"></i> 我的徽章</a></li>
+        <li><a href="{%url 'user-ranks'%}" class="btn"><i class="fas fa-trophy">&nbsp;</i> 排行榜 </a></li>
         <li><a href="{%url 'logout'%}" class="btn"><i class="fas fa-sign-out-alt"></i> 登出系統 </a></li>
       </ul>
     </div>
-    <div class="sidebar-bottom"></div>
+    <hr class="solid divider">
+    <div class="sidebar-bottom">
+      <h4>每日任務清單</h4>
+      <ul>
+        <li>
+          <label class="container">1. 睡覺滿六小時 &nbsp; &nbsp;
+            <input type="checkbox" checked="checked"> 
+            <span class="checkmark"></span>
+          </label>
+          </li>
+          <li>
+            <label class="container">2. 運動滿一小時 &nbsp; &nbsp;
+              <input type="checkbox" checked="checked">
+              <span class="checkmark"></span>
+            </label>
+            </li>
+            <li>
+              <label class="container">3. 步行滿三千步 &nbsp; &nbsp;
+                <input type="checkbox" checked="checked">
+                <span class="checkmark"></span>
+              </label>
+              </li>
+        
+      </ul>
+    </div>
   </div>
+  <div class="main-block">
   <div class="main-column">
     <div class="title-block">
       <h3>昨天目標完成率</h3>
+      
     </div>
     <div class="stat-block">
       <div class="prog-container">
@@ -106,6 +133,8 @@
       </svg>
     </div>
   </div>
+</div>
+</div>
 </div>
 <script>
   let val1 = "{{percent.0}}"

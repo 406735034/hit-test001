@@ -75,9 +75,27 @@ def dashboard(request):
 @login_required(login_url='login')
 @allowed_users(allowed_roles=['admins', 'Students'])
 def userPage(request):
-    percentage = [55, 90, 20, 30]
+    percentage = [99, 10, 5, 15]
     context = {'percent': percentage}
-    return render(request, 'user.html', context)
+    return render(request, 'user-home.html', context)
+
+
+@login_required(login_url='login')
+@allowed_users(allowed_roles=['admins', 'Students'])
+def userRecPage(request):
+    return render(request, 'user-record.html')
+
+
+@login_required(login_url='login')
+@allowed_users(allowed_roles=['admins', 'Students'])
+def userAwards(request):
+    return render(request, 'user-awards.html')
+
+
+@login_required(login_url='login')
+@allowed_users(allowed_roles=['admins', 'Students'])
+def userRanks(request):
+    return render(request, 'user-rankings.html')
 
 
 @login_required(login_url='login')
