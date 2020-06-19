@@ -81,3 +81,21 @@ class Tamkang(models.Model):
 
     def __str__(self):
         return self.building
+
+
+class userdata(models.Model):
+    username = models.CharField(max_length=150, null=True)
+    sleep = models.IntegerField()
+    walk = models.IntegerField()
+    exercise = models.IntegerField()
+    calories = models.IntegerField()
+    avg_monday = models.IntegerField()
+    avg_tuesday = models.IntegerField()
+    avg_wednesday = models.IntegerField()
+    avg_thursday = models.IntegerField()
+    avg_friday = models.IntegerField()
+    avg_saturday = models.IntegerField()
+    avg_sunday = models.IntegerField()
+
+    def __str__(self):
+        return self.username
