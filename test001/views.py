@@ -2,7 +2,7 @@ import requests
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.forms import inlineformset_factory
-from .models import banddata
+from .models import *
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import Group
 
@@ -12,7 +12,7 @@ from django.contrib.auth import authenticate, login, logout
 
 from django.contrib.auth.decorators import login_required
 
-from .models import *
+from .models import banddata
 from .forms import RegisterForm, ResetForm
 
 from .decorators import unauthenticated_user, allowed_users, admin_only
@@ -75,30 +75,36 @@ def dashboard(request):
 @login_required(login_url='login')
 @allowed_users(allowed_roles=['admins', 'Students'])
 def userPage(request):
-    percentage = [99, 10, 5, 15]
-    context = {'percent': percentage}
+    user = userdata.objects.all()
+    context = {'users': user}
     return render(request, 'user-home.html', context)
 
 
 @login_required(login_url='login')
 @allowed_users(allowed_roles=['admins', 'Students'])
 def userRecPage(request):
-    return render(request, 'user-record.html')
+    user = userdata.objects.all()
+    context = {'users': user}
+    return render(request, 'user-record.html', context)
 
 
 @login_required(login_url='login')
 @allowed_users(allowed_roles=['admins', 'Students'])
 def userAwards(request):
-    return render(request, 'user-awards.html')
+    user = userdata.objects.all()
+    context = {'users': user}
+    return render(request, 'user-awards.html', context)
 
 
 @login_required(login_url='login')
 @allowed_users(allowed_roles=['admins', 'Students'])
 def userRanks(request):
-    return render(request, 'user-rankings.html')
+    user = userdata.objects.all()
+    context = {'users': user}
+    print('users')
+    return render(request, 'user-rankings.html', context)
 
 
 @login_required(login_url='login')
 def restrict(request):
-
     return render(request, 'restrict.html')

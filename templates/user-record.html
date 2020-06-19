@@ -1,66 +1,151 @@
 {% extends 'base.html'%} {% block content %} {%load static%}
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"
+  charset="utf-8"
+></script>
 <link rel="stylesheet" type="text/css" href="{%static 'css/user.css' %}" />
+<link rel="stylesheet" type="text/css" href="{%static 'css/graph.css' %}" />
+{%for user in users%}
 <div class="main-container">
   <div class="sidebar">
     <div class="sidebar-top">
       <h3>頁面選擇清單</h3>
       <ul>
-        <li><a href="{%url 'user-page'%}" class="btn "><i class="fas fa-home">&nbsp;</i> 主頁面 </a></li>
-        <li><a href="{%url 'user-rec'%}" class="btn active"> <i class="fas fa-calendar-plus">&nbsp;</i>資料紀錄 </a></li>
-        <li><a href="{%url 'user-awards'%}" class="btn"><i class="fas fa-shield-alt"></i> 我的徽章</a></li>
-        <li><a href="{%url 'user-ranks'%}" class="btn"><i class="fas fa-trophy">&nbsp;</i> 排行榜 </a></li>
-        <li><a href="{%url 'logout'%}" class="btn"><i class="fas fa-sign-out-alt"></i> 登出系統 </a></li>
+        <li>
+          <a href="{%url 'user-page'%}" class="btn"
+            ><i class="fas fa-home">&nbsp;</i> 主頁面
+          </a>
+        </li>
+        <li>
+          <a href="{%url 'user-rec'%}" class="btn active">
+            <i class="fas fa-calendar-plus">&nbsp;</i>資料紀錄
+          </a>
+        </li>
+        <li>
+          <a href="{%url 'user-awards'%}" class="btn"
+            ><i class="fas fa-shield-alt"></i> 我的徽章</a
+          >
+        </li>
+        <li>
+          <a href="{%url 'user-ranks'%}" class="btn"
+            ><i class="fas fa-trophy">&nbsp;</i> 排行榜
+          </a>
+        </li>
+        <li>
+          <a href="{%url 'logout'%}" class="btn"
+            ><i class="fas fa-sign-out-alt"></i> 登出系統
+          </a>
+        </li>
       </ul>
     </div>
-    <hr class="solid divider">
+    <hr class="solid divider" />
     <div class="sidebar-bottom">
       <h4>每日任務清單</h4>
       <ul>
         <li>
-          <label class="container">1. 睡覺滿六小時 &nbsp; &nbsp;
-            <input type="checkbox" checked="checked"> 
+          <label class="container"
+            >1. 睡覺滿六小時 &nbsp; &nbsp;
+            <input type="checkbox" checked="checked" />
             <span class="checkmark"></span>
           </label>
-          </li>
-          <li>
-            <label class="container">2. 運動滿一小時 &nbsp; &nbsp;
-              <input type="checkbox" checked="checked">
-              <span class="checkmark"></span>
-            </label>
-            </li>
-            <li>
-              <label class="container">3. 步行滿三千步 &nbsp; &nbsp;
-                <input type="checkbox" checked="checked">
-                <span class="checkmark"></span>
-              </label>
-              </li>
-        
+        </li>
+        <li>
+          <label class="container"
+            >2. 運動滿一小時 &nbsp; &nbsp;
+            <input type="checkbox" checked="checked" />
+            <span class="checkmark"></span>
+          </label>
+        </li>
+        <li>
+          <label class="container"
+            >3. 步行滿三千步 &nbsp; &nbsp;
+            <input type="checkbox" checked="checked" />
+            <span class="checkmark"></span>
+          </label>
+        </li>
       </ul>
     </div>
   </div>
   <div class="rec-block">
-    <div class="rec-title">
-      <h3>昨天目標完成率</h3>
+    <div class="graph-block">
+      <div class="rec-title">
+        <h3>昨天目標完成率</h3>
+        <div class="chart">
+          <ul class="numbers">
+            <li><span>100%</span></li>
+            <li><span>50%</span></li>
+            <li><span>0%</span></li>
+          </ul>
+          <div class="vertical-line"></div>
+          <ul class="bars">
+            <li>
+              <div class="bar" data-percentage="{{user.avg_monday}}"></div>
+              <div class="bar2" data-percentage="{{user.avg_tuesday}}"></div>
+              <span>星期一</span>
+            </li>
+            <li>
+              <div class="bar" data-percentage="{{user.avg_tuesday}}"></div>
+              <div class="bar2" data-percentage="{{user.avg_monday}}"></div>
+              <span>星期二</span>
+            </li>
+            <li>
+              <div class="bar" data-percentage="{{user.avg_wednesday}}"></div>
+              <div class="bar2" data-percentage="{{user.avg_tuesday}}"></div>
+              <span>星期三</span>
+            </li>
+            <li>
+              <div class="bar" data-percentage="{{user.avg_thursday}}"></div>
+              <div class="bar2" data-percentage="{{user.avg_friday}}"></div>
+              <span>星期四</span>
+            </li>
+            <li>
+              <div class="bar" data-percentage="{{user.avg_friday}}"></div>
+              <div class="bar2" data-percentage="{{user.avg_sunday}}"></div>
+              <span>星期五</span>
+            </li>
+            <li>
+              <div class="bar" data-percentage="{{user.avg_saturday}}"></div>
+              <div class="bar2" data-percentage="{{user.avg_tuesday}}"></div>
+              <span>星期六</span>
+            </li>
+            <li>
+              <div class="bar" data-percentage="{{user.avg_sunday}}"></div>
+              <div class="bar2" data-percentage="{{user.avg_monday}}"></div>
+              <span>星期日</span>
+            </li>
+            <hr class="bar-bottom" />
+          </ul>
+          <h3></h3>
+        </div>
+      </div>
     </div>
-    
+    <div class="average-block"></div>
   </div>
-  
 </div>
 <script>
-  let val1 = "{{percent.0}}"
-  let val2 = "{{percent.1}}"
-  let val3 = "{{percent.2}}"
-  let val4 = "{{percent.3}}"
-  let stroke1 = document.getElementById("one")
-  let stroke2 = document.getElementById("two")
-  let stroke3 = document.getElementById("three")
-  let stroke4 = document.getElementById("four")
-  stroke1.style.strokeDashoffset = 440 - (440 * val1) / 100;
-  stroke2.style.strokeDashoffset = 440 - (440 * val2) / 100;
-  stroke3.style.strokeDashoffset = 440 - (440 * val3) / 100;
-  stroke4.style.strokeDashoffset = 440 - (440 * val4) / 100;
-
+  $(function () {
+    $(".bars li .bar").each(function (key, bar) {
+      var percentage = $(this).data("percentage");
+      $(this).animate(
+        {
+          height: percentage / 1.5 + "%",
+        },
+        500
+      );
+    });
+  });
+  $(function () {
+    $(".bars li .bar2").each(function (key, bar) {
+      var percentage = $(this).data("percentage");
+      $(this).animate(
+        {
+          height: percentage / 1.5 + "%",
+        },
+        500
+      );
+    });
+  });
 </script>
 <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-{%endblock%}
+{%endfor%} {%endblock%}
