@@ -3,80 +3,42 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Dashboard</title>
-    <link href="{% static 'dist/css/style.min.css' %}" rel="stylesheet" />
-    <link rel="stylesheet" href="{% static 'css/all.css' %} " type="text/css" />
-    <link
-      rel="stylesheet"
-      href="{% static 'css/bootstrap.min.css' %}"
-      type="text/css"
-    />
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/all.css' %}" rel="stylesheet" />
     <link rel="stylesheet" href="{% static 'css/main.css' %}" type="text/css" />
   </head>
 
   <header>
-    <nav class="navbar navbar-expand-sm navbar-light ">
+    <nav class="navbar navbar-expand-sm navbar-light">
       <div class="container">
         <a class="navbar-brand" href="{% url 'home'%}" id="brand"
-          ><img src="{% static 'images/logo01.png' %}" alt="logo" srcset=""
+          ><img src="{% static 'images/wistron.png' %}" alt="logo" srcset=""
         /></a>
-        <button
-          class="navbar-toggler"
-          data-toggle="collapse"
-          data-target="#navbarNav"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
+
+        <div class="navbar navbar-collapse" id="navbarNav">
           {%if request.user.is_staff%}
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" href="#">Dashboard</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Posts</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Categories</a>
-            </li>
+          <ul>
             <li class="nav-item">
               <a class="nav-link" href="#">Users</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">None</a>
+            </li>
           </ul>
           {%endif%} {%if request.user.is_authenticated %}
-          <div class=" ml-auto">
+          <div class="ml-auto">
             <ul class="navbar-nav">
-              <li class="nav-item ">
-                <a href="#" class="nav-link"> Hello, {{request.user}}! </a>
+              <li class="nav-item">
+                <a href="#" class="nav-link"> 您好, {{request.user}} ! </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'logout' %}"
-                  ><i class="fas fa-sign-out-alt"></i> Logout</a
+                  ><i class="fas fa-sign-out-alt"></i> 登出</a
                 >
               </li>
             </ul>
           </div>
 
-          {%else%}
-          <div class=" ml-auto">
-            <ul class="navbar-nav">
-              <li class="nav-item ">
-                <a href="{% url 'login'%}" class="nav-link"
-                  ><i class="fas fa-user"></i> Login</a
-                >
-                <!-- <div class="dropdown-menu">
-                                    <a href="#" class="dropdown-item">Link 1</a>
-                                    <a href="#" class="dropdown-item">Link 2</a>
-                                    <a href="#" class="dropdown-item">Link 3</a>
-                                </div> -->
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'register' %}"
-                  ><i class="fas fa-user-plus"></i> Register</a
-                >
-              </li>
-            </ul>
-          </div>
           {%endif%}
         </div>
       </div>
@@ -86,16 +48,10 @@
   <body>
     {% block content %} {% endblock %}
     <footer class="footer">
-      Copyright &copy; 2020 ||  <strong> The Hit Group </strong>  ||  Tamkang ET ||
+      Copyright &copy; 2020 || <strong> The Hit Group </strong> || Tamkang ET ||
+      Wistron
     </footer>
-    <script src="{% static 'js/jquery-3.3.1.js' %}"></script>
-    <script src="{% static 'js/jquery-ui.js'%}"></script>
-    <!-- Bootstrap tether Core JavaScript -->
-    <script src="{% static 'assets/libs/popper.js/dist/umd/popper.min.js' %}"></script>
-    <script src="{% static 'js/bootstrap.min.js'%}"></script>
-    <!-- ============================================================== -->
-    <!-- This page plugin js -->
-    <!-- ============================================================== -->
+
     <script src="{% static 'js/custom.js'%}"></script>
   </body>
 </html>

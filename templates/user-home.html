@@ -1,177 +1,165 @@
-{% extends 'base.html'%} {% block content %} {%load static%}
-<link rel="stylesheet" type="text/css" href="{%static 'css/user.css' %}" />
-{%for user in users%}
-<div class="mother-block">
+{% extends 'base.html' %} {% load static %} {% block content %}
+<!DOCTYPE html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="{% static 'css/user-home.css' %}" />
+
+  <title>User Home</title>
+</head>
+<body>
   <div class="main-container">
-    <div class="sidebar">
-      <div class="sidebar-top">
-        <h3>頁面選擇清單</h3>
-        <ul>
-          <li>
-            <a href="{%url 'user-page'%}" class="btn active"
-              ><i class="fas fa-home">&nbsp;</i> 主頁面
-            </a>
-          </li>
-          <li>
-            <a href="{%url 'user-rec'%}" class="btn">
-              <i class="fas fa-calendar-plus">&nbsp;</i>資料紀錄
-            </a>
-          </li>
-          <li>
-            <a href="{%url 'user-awards'%}" class="btn"
-              ><i class="fas fa-shield-alt"></i> 我的徽章</a
+    <div class="main-div">
+      <div class="side-block">
+        <div class="user-info">
+          <div class="top-title">
+            <span class="school-name">淡江大學</span>
+            <span class="user-role"
+              ><img
+                src="{% static 'images/own-icons/book.png' %}"
+                alt="user-role"
+                srcset=""
+              />
+
+              <h2>學生</h2></span
             >
-          </li>
-          <li>
-            <a href="{%url 'user-ranks'%}" class="btn"
-              ><i class="fas fa-trophy">&nbsp;</i> 排行榜
-            </a>
-          </li>
-          <li>
-            <a href="{%url 'logout'%}" class="btn"
-              ><i class="fas fa-sign-out-alt"></i> 登出系統
-            </a>
-          </li>
-        </ul>
-      </div>
-      <hr class="solid divider" />
-      <div class="sidebar-bottom">
-        <h4>每日任務清單</h4>
-        <ul>
-          <li>
-            <label class="container"
-              >1. 睡覺滿六小時 &nbsp; &nbsp;
-              <input type="checkbox" checked="checked" />
-              <span class="checkmark"></span>
-            </label>
-          </li>
-          <li>
-            <label class="container"
-              >2. 運動滿一小時 &nbsp; &nbsp;
-              <input type="checkbox" checked="checked" />
-              <span class="checkmark"></span>
-            </label>
-          </li>
-          <li>
-            <label class="container"
-              >3. 步行滿三千步 &nbsp; &nbsp;
-              <input type="checkbox" checked="checked" />
-              <span class="checkmark"></span>
-            </label>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <div class="main-block">
-      <div class="main-column">
-        <div class="title-block">
-          <h3>昨天目標完成率</h3>
-        </div>
-        <div class="stat-block">
-          <div class="prog-container">
-            <div class="card">
-              <div class="box">
-                <div class="percent">
-                  <svg>
-                    <circle cx="70" cy="70" r="70"></circle>
-                    <circle cx="70" cy="70" r="70" id="one"></circle>
-                  </svg>
-                  <div class="number">
-                    <h4>{{user.sleep}}<span>%</span></h4>
+          </div>
+          <div class="user-profile">
+            <div class="profile-data">
+              <div class="user-left">
+                <div class="user-data">
+                  <a href="#"> <i class="fas fa-user-cog user-conf-btn"></i></a>
+                  <a href="#"><i class="fas fa-info info-btn"></i></a>
+                  <div class="user-dp">
+                    <img
+                      src="{%static 'images/avatar_male.png'%}"
+                      alt="user-dp"
+                    />
+                    <h5 class="user-name">
+                      {{user.first_name}}{{user.last_name}}
+                    </h5>
                   </div>
-                  <div class="text" id="sleep"><h4>睡覺</h4></div>
+                </div>
+                <div class="award-data">
+                  <a href="#"> <i class="fas fa-cog user-conf-btn"></i></a>
+
+                  <a href="#"><i class="fas fa-info info-btn"></i></a>
+                  <div class="award-pic">
+                    <img src="{%static 'images/award1.jpg'%}" alt="" />
+                    <p class="award-name">我就是你的盾牌</p>
+                  </div>
                 </div>
               </div>
             </div>
-            <div class="card">
-              <div class="box">
-                <div class="percent">
-                  <svg>
-                    <circle cx="70" cy="70" r="70"></circle>
-                    <circle cx="70" cy="70" r="70" id="two"></circle>
-                  </svg>
-                  <div class="number">
-                    <h4>{{user.walk}}<span>%</span></h4>
-                  </div>
+            <div class="earlier-data">
+              <div class="prog-block">
+                <div class="prog-progress">
+                  <p class="prog-title">昨日卡路里消耗</p>
+                  <progress max="100" value="80" class="prog-sleep"></progress>
                 </div>
-                <div class="text" id="walk"><h4>步行</h4></div>
               </div>
-            </div>
-            <div class="card">
-              <div class="box">
-                <div class="percent">
-                  <svg>
-                    <circle cx="70" cy="70" r="70"></circle>
-                    <circle cx="70" cy="70" r="70" id="three"></circle>
-                  </svg>
-                  <div class="number">
-                    <h4>{{user.exercise}}<span>%</span></h4>
-                  </div>
+              <div class="prog-block">
+                <div class="prog-progress">
+                  <p class="prog-title">昨日卡路里消耗</p>
+                  <div class="prog-graph graph2"></div>
                 </div>
-                <div class="text" id="workout"><h4>運動</h4></div>
               </div>
-            </div>
-            <div class="card">
-              <div class="box">
-                <div class="percent">
-                  <svg>
-                    <circle cx="70" cy="70" r="70"></circle>
-                    <circle cx="70" cy="70" r="70" id="four"></circle>
-                  </svg>
-                  <div class="number">
-                    <h4>{{user.calories}}<span>%</span></h4>
-                  </div>
+              <div class="prog-block">
+                <div class="prog-progress">
+                  <p class="prog-title">昨日卡路里消耗</p>
+                  <div class="prog-graph graph3"></div>
                 </div>
-                <div class="text" id="calory"><h4>卡路里</h4></div>
               </div>
             </div>
           </div>
         </div>
-        <div class="btn-block">
-          <h1>開始探險</h1>
-        </div>
-        <div class="lesson-block">
-          <div class="les-block one">Lesson 1</div>
-          <div class="les-block two">Lesson 2</div>
-          <div class="les-block three">Lesson 3</div>
-          <div class="les-block four">Lesson 4</div>
+        <div class="today-prog">
+          <h3 class="today-title">今日要完成的目標</h3>
+          <div class="today-titles">
+            <div class="title-set">
+              <div class="prog-dot dot1"></div>
+              <h5 class="dot-title title1">未完成</h5>
+              &emsp; &emsp;&ensp;
+              <div class="prog-dot dot2"></div>
+              <h5 class="dot-title title2">完成</h5>
+              &emsp; &emsp;&ensp;
+              <div class="prog-dot dot3"></div>
+              <h5 class="dot-title title3">未完成</h5>
+              &emsp; &emsp;&ensp;
+            </div>
+          </div>
+          <div class="vert-graph">
+            <div class="chart">
+              <ul class="bars">
+                <li>
+                  <div class="bar bar1" data-percentage="50"></div>
+                  <span style="color: #18f927 !important">C - 50%</span>
+                </li>
+                <li>
+                  <div class="bar bar2" data-percentage="100"></div>
+                  <span style="color: #ff1b13 !important">W - 100%</span>
+                </li>
+                <li>
+                  <div class="bar bar3" data-percentage="60"></div>
+                  <span style="color: #ffb611 !important">Z - 60%</span>
+                </li>
+              </ul>
+            </div>
+            <!--chart end-->
+          </div>
         </div>
       </div>
-      <div class="right-column">
-        <div class="user-pic">
-          <img src="{%static 'images/male_avatar.svg'%}" alt="" />
-          <h5>{{user.username}}</h5>
-          <p>學生</p>
-          <p>{{data1.Gender}}</p>
-          <p>** HIT 國中 **</p>
-        </div>
+      <div class="main-block">
+        <div class="tabContainer">
+          <div class="buttonContainer">
+            <button onclick="showPanel(0,'#f44336')">單元學習</button>
+            <button onclick="showPanel(1,'#4caf50')">比較數據</button>
+            <button onclick="showPanel(2,'#2196f3')">遊戲相關</button>
+            <button onclick="showPanel(3,'#ff5722')">個人數據</button>
+            <button onclick="showPanel(4,'#f1c40f')">網站說明</button>
+            <!-- <button onclick="showPanel(0,'#f44336')">單元學習</button>
+            <button onclick="showPanel(1,'#4caf50')">比較數據</button>
+            <button onclick="showPanel(2,'#2196f3')">遊戲相關</button>
+            <button onclick="showPanel(3,'#ff5722')">個人數據</button>
+            <button onclick="showPanel(4,'#f1c40f')">網站說明</button> -->
+          </div>
+          <div class="tabPanel">{% include 'lesson-block.html'%}</div>
+          <div class="tabPanel">{% include 'statistics-block.html'%}</div>
+          <div class="tabPanel">{% include 'game-block.html'%}</div>
+          <div class="tabPanel">
+            <div class="tab-body">{% include "charts.html" %}</div>
+          </div>
 
-        <div class="charts">
-          <svg>
-            <line x1="50" y1="50" x2="100" y2="120" stroke="black"></line>
-            <line x1="100" y1="120" x2="170" y2="30" stroke="black"></line>
-          </svg>
+          <div class="tabPanel">{% include 'web-info.html'%}</div>
         </div>
       </div>
     </div>
   </div>
-</div>
 
-<script>
-  let val1 = "{{user.sleep}}";
-  let val2 = "{{user.walk}}";
-  let val3 = "{{user.exercise}}";
-  let val4 = "{{user.calories}}";
-  let stroke1 = document.getElementById("one");
-  let stroke2 = document.getElementById("two");
-  let stroke3 = document.getElementById("three");
-  let stroke4 = document.getElementById("four");
-  stroke1.style.strokeDashoffset = 440 - (440 * val1) / 100;
-  stroke2.style.strokeDashoffset = 440 - (440 * val2) / 100;
-  stroke3.style.strokeDashoffset = 440 - (440 * val3) / 100;
-  stroke4.style.strokeDashoffset = 440 - (440 * val4) / 100;
-</script>
-{%endfor%}
-<script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
-<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-{%endblock%}
+  <script
+    src="https://kit.fontawesome.com/3440ae8e61.js"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"
+    charset="utf-8"
+  ></script>
+  <script src="{% static 'js/user-tab.js'%}"></script>
+
+  <script type="text/javascript">
+    $(function () {
+      $(".bars li .bar").each(function (key, bar) {
+        var percentage = $(this).data("percentage");
+        $(this).animate(
+          {
+            height: percentage * 0.9 + "%",
+          },
+          1000
+        );
+      });
+    });
+  </script>
+</body>
+
+{% endblock %}

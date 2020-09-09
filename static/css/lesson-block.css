@@ -1,0 +1,138 @@
+.tab-body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.lesson-div {
+  display: flex;
+  height: 75%;
+  width: 85%;
+  border: 4px solid rgba(23, 68, 166, 1);
+  margin: auto;
+  margin-top: 22px;
+  border-radius: 30px;
+}
+
+.lesson-num {
+  position: relative;
+  height: 120px;
+  width: 110px;
+  margin: 15px 30px;
+  border-radius: 15px;
+  border: 4px solid rgba(23, 68, 166, 1);
+  text-align: center;
+}
+
+.lesson-num > h1 {
+  font-size: 9rem;
+  line-height: 110px;
+}
+
+.lesson1 .lesson-num > h1 {
+  margin-left: -8px;
+}
+
+.lesson-data {
+  position: relative;
+  height: 98%;
+  width: 590px;
+  margin: 1px 2px;
+}
+
+.lesson-data .data-top {
+  height: 44%;
+  width: 588px;
+  margin: 1px 2px;
+  text-align: left !important;
+  position: relative;
+}
+
+.lesson-data .data-bottom {
+  height: 52%;
+  width: 588px;
+  margin: 1px 2px;
+}
+
+.lesson-data .data-top > h1 {
+  position: relative;
+  padding: 15px 0;
+  font-size: 2.9rem;
+  font-weight: 700;
+  color: #ffffff;
+  -webkit-text-stroke: 0.5px #fa8231;
+  width: 200px;
+  float: left;
+  margin-left: -10px;
+}
+
+.lesson-data .data-top .lesson-btns > h3 {
+  position: relative;
+  float: left;
+  width: auto;
+  top: 15px;
+  margin-left: 10px;
+  font-size: 1.5rem;
+  font-weight: 800;
+  padding: 6px 10px;
+  border: 4px solid rgba(23, 68, 166, 1);
+  border-radius: 15px;
+  color: #ffffff;
+}
+
+.lesson1,
+.lesson1 .lesson-num,
+.lesson1 .lesson-data .data-top .lesson-btns > h3 {
+  border-color: #6704a8;
+}
+
+.lesson2,
+.lesson2 .lesson-num,
+.lesson2 .lesson-data .data-top .lesson-btns > h3 {
+  border-color: #277ffe;
+}
+
+.lesson3,
+.lesson3 .lesson-num,
+.lesson3 .lesson-data .data-top .lesson-btns > h3 {
+  border-color: #518b2d;
+}
+
+.lesson1 .lesson-data .data-top > h1 {
+  -webkit-text-stroke: 2px #6704a8;
+}
+
+.lesson2 .lesson-data .data-top > h1 {
+  -webkit-text-stroke: 2px #277ffe;
+}
+
+.lesson3 .lesson-data .data-top > h1 {
+  -webkit-text-stroke: 2px #518b2d;
+}
+
+.lesson1 .lesson-data .data-top .lesson-btns > h3 {
+  -webkit-text-stroke: 1px #6704a8;
+}
+
+.lesson2 .lesson-data .data-top .lesson-btns > h3 {
+  -webkit-text-stroke: 1px #277ffe;
+}
+
+.lesson3 .lesson-data .data-top .lesson-btns > h3 {
+  -webkit-text-stroke: 1px #518b2d;
+}
+
+.tick-group > img {
+  float: left;
+  height: 40px;
+  width: 40px;
+  margin: 20px 3px 0 10px;
+}
+
+.lesson-btns #tick {
+  margin-left: -42px;
+  height: 50px;
+  width: 45px;
+  margin-top: 5px;
+  /* visibility: hidden; */
+}
