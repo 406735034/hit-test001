@@ -1,0 +1,67 @@
+{% load static %}
+<head>
+  <link rel="stylesheet" href="{% static 'css/game-block.css' %}" />
+</head>
+
+<body>
+  <div class="tab-body">
+    <div class="title-section">
+      <div class="game-inner-div">
+        <div class="game-user-icon">
+          <img src="{%static 'images/naa.png'%}" alt="" />
+          <div class="game-level"><h3>LV: 1 冒險新兵</h3></div>
+          <div class="game-level-skew"></div>
+          <div class="game-user">
+            <h1>{{user.first_name}}{{user.last_name}}</h1>
+          </div>
+          <div class="game-user-skew"></div>
+        </div>
+      </div>
+    </div>
+    <div class="title-section">
+      <div class="game-inner-div">
+        <button class="game-start-button">進入冒險世界!</button>
+      </div>
+    </div>
+    <div class="title-section">
+      <div class="game-inner-div lcard-main">
+        <div class="leaderboard-card lcard1">
+          <h5 class="lcard-title">已獲取的徽章</h5>
+          <span class="lcard-body"
+            ><img
+              src="{%static 'images/own-icons/badge.png'%}"
+              alt=""
+              srcset=""
+            />
+            <h1>2</h1>
+            <h5>個</h5>
+          </span>
+        </div>
+        <div class="leaderboard-card lcard2">
+          <h5 class="lcard-title">已攻破的地圖</h5>
+          <span class="lcard-body lcard-map"
+            ><img
+              src="{%static 'images/own-icons/game-world.png'%}"
+              alt=""
+              srcset=""
+            />
+            <h1>1</h1>
+            <h5>張</h5>
+          </span>
+        </div>
+        <div class="leaderboard-card lcard3">
+          <h5 class="lcard-title">已獲得的寶物</h5>
+          <span class="lcard-body"
+            ><img
+              src="{%static 'images/own-icons/gifts.png'%}"
+              alt=""
+              srcset=""
+            />
+            <h1>3</h1>
+            <h5>件</h5>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

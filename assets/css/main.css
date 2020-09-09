@@ -1,3 +1,8 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+
 body {
   background-color: #d4f3ef;
   /* background: #e74c3c; */
@@ -53,12 +58,20 @@ body {
   text-align: center;
   font-weight: 600;
   padding-bottom: 30px;
-  padding-top: 0;
+  padding-top: 10px;
   font-size: 1em;
   position: fixed;
   bottom: 0;
+  align-items: center;
+  justify-content: center;
 }
 
-.header{
+.header {
   margin-bottom: 0;
+}
+
+.ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 }

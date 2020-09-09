@@ -22,7 +22,17 @@ from .decorators import unauthenticated_user, allowed_users, admin_only
 
 @unauthenticated_user
 def home(request):
-    return render(request, 'index.html')
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            login(request, user)
+            return redirect('dashboard')
+        else:
+            messages.info(request, 'Username or Password incorrect .... !!!!')
+    return render(request, 'login.html')
 
 
 @unauthenticated_user
