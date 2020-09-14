@@ -17,6 +17,8 @@ from .forms import RegisterForm, ResetForm
 
 from .decorators import unauthenticated_user, allowed_users, admin_only
 
+from django.views.generic import TemplateView
+
 # Create your views here.
 
 
@@ -118,3 +120,8 @@ def userRanks(request):
 @login_required(login_url='login')
 def restrict(request):
     return render(request, 'restrict.html')
+
+
+@login_required(login_url='login')
+class ClubCharView(TemplateView):
+    template_name = 'charts/chart.html'

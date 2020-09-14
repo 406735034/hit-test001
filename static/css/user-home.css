@@ -37,6 +37,8 @@ body {
   grid-template-areas: "sideblock mainblock mainblock mainblock mainblock mainblock";
   grid-gap: 10px;
   margin-bottom: 50px;
+  background-color: #eee;
+  /* opacity: 0.95; */
 }
 
 .main-div > div {

@@ -3,3 +3,223 @@
   display: flex;
   flex-direction: column;
 }
+
+.stat-top {
+  margin: 12px 55px;
+  position: relative;
+  height: 6%;
+  display: block;
+  /* background-color: green; */
+}
+
+.stat-top > a,
+.stat-top > a:visited,
+.stat-top:active {
+  text-decoration: none;
+}
+
+.stat-top .stat-btn {
+  border: 3px solid rgba(23, 68, 166, 1);
+  height: 40px;
+  width: 150px;
+  border-radius: 20px;
+  float: left;
+  margin-right: 20px;
+  cursor: pointer;
+  color: darkgreen;
+  display: block;
+}
+
+.stat-top .stat-btn > img {
+  float: left;
+  height: 26px;
+  width: 26px;
+  margin-top: 4px;
+  margin-left: 15px;
+}
+
+.stat-top .stat-btn #prg {
+  height: 23px;
+  width: 35px;
+  margin-top: 6px;
+}
+
+.stat-top .stat-btn > h2 {
+  font-size: 2rem;
+  line-height: 35px;
+  font-weight: 800;
+}
+
+.stat-middle {
+  /* background-color: red; */
+  position: relative;
+  display: block;
+  height: 400px;
+  margin-right: 10px;
+  margin-left: 10px;
+  margin-top: 15px;
+  border-bottom: 3px dashed rgba(23, 68, 166, 1);
+}
+
+.stat-middle .lboard {
+  height: 96%;
+  width: 27%;
+  position: relative;
+  float: left;
+  display: block;
+  margin-left: 40px;
+  border: 3px solid rgba(23, 68, 166, 1);
+  border-radius: 20px;
+  padding-top: 10px;
+}
+
+.stat-middle .lboard > h1 {
+  background-color: #ffffffff;
+  font-size: 2.3rem;
+  border-radius: 20px 20px 0 0;
+  border-bottom: 4px solid rgba(23, 68, 166, 1);
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  color: rgba(0, 130, 0, 1);
+}
+.stat-middle .lboard-right {
+  float: right;
+  margin-left: 10px;
+  margin-right: 40px;
+}
+
+.stat-middle .lboard-middle > h1 {
+  color: #ff1b13;
+}
+
+.stat-middle .lboard-right > h1 {
+  color: #ffb611;
+}
+.stat-middle .lboard > h2 {
+  margin: 15px 0;
+  /* background-color: red; */
+  height: 60px;
+  line-height: 55px;
+  font-size: 2.3rem;
+  text-align: right;
+  padding-right: 10px;
+  border: 2px solid rgba(0, 130, 0, 1);
+  position: relative;
+  z-index: 1;
+  margin-left: 40px;
+  margin-right: -2px;
+  border-left: none;
+  border-radius: 15px;
+}
+
+.stat-middle .lboard .rank {
+  float: left;
+  margin-left: 20px;
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  border: 2px solid rgba(0, 130, 0, 1);
+  padding-right: 9px;
+  font-size: 3.2rem;
+  position: relative;
+  z-index: 5;
+  line-height: 55px;
+  padding-left: 5px;
+  background-color: rgba(0, 130, 0, 1);
+  box-shadow: 5px 4px black;
+  color: white;
+}
+
+.stat-middle .lboard-middle .rank {
+  border-color: #ff1b13;
+  background-color: #ff1b13;
+}
+
+.stat-middle .lboard-middle > h2 {
+  border-color: #ff1b13;
+}
+
+.stat-middle .lboard-right .rank {
+  border-color: #ffb611;
+  background-color: #ffb611;
+}
+
+.stat-middle .lboard-right > h2 {
+  border-color: #ffb611;
+}
+
+.stat-middle .lboard .myrank {
+  margin-left: 10px;
+  background-color: rgba(23, 68, 166, 1);
+  border-color: rgba(23, 68, 166, 1);
+}
+
+.lboard #myrank {
+  border: 2px solid rgba(23, 68, 166, 1);
+  font-size: 2.6rem;
+  border-left: none;
+  margin-left: 20px;
+}
+
+.stat-bottom {
+  margin-top: 5px;
+  height: 175px;
+  /* background-color: blue; */
+  position: relative;
+  display: block;
+
+  padding-top: 10px;
+}
+
+.stat-bottom .stat-info {
+  height: 94%;
+  width: 40%;
+  /* background-color: #ff1b13; */
+  float: left;
+  margin-left: 80px;
+  margin-right: 0px;
+}
+
+.stat-bottom .stat-info-right {
+  float: right;
+  margin-right: 80px;
+  margin-left: 0px;
+}
+
+.stat-bottom .stat-btm-img {
+  float: left;
+  height: 100%;
+  width: 48%;
+  border: 3px solid rgba(23, 68, 166, 1);
+  border-radius: 20px;
+}
+
+.stat-bottom .stat-btm-info {
+  width: 48%;
+  height: 100%;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  float: right;
+}
+
+.stat-bottom .stat-btm-info > h2 {
+  height: 25%;
+  width: 85%;
+  border: 3px solid rgba(23, 68, 166, 1);
+  line-height: 30px;
+  border-radius: 20px;
+  font-size: 1.5rem;
+  margin-left: 10px;
+}
+
+.stat-bottom .stat-btm-info > p {
+  height: 72%;
+  width: 96%;
+  border: 3px solid rgba(23, 68, 166, 1);
+  line-height: auto;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  text-align: left;
+  padding-left: 15px;
+}

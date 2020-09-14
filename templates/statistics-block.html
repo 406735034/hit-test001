@@ -1,8 +1,98 @@
 {% load static %}
 <head>
-  <link rel="stylesheet" href="{% static 'css/lesson-block.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/statistics-block.css' %}" />
 </head>
 
 <body>
-  <div class="tab-body"></div>
+  <div class="tab-body">
+    <div class="stat-top">
+      <a href="#">
+        <div class="stat-btn">
+          <img
+            src="{% static 'images/own-icons/calendar.png' %}"
+            alt=""
+            srcset=""
+          />
+          <h2>昨日</h2>
+        </div>
+      </a>
+      <a href="#">
+        <div class="stat-btn">
+          <img
+            src="{% static 'images/own-icons/progress.png' %}"
+            alt=""
+            srcset=""
+            id="prg"
+          />
+          <h2>平均</h2>
+        </div>
+      </a>
+    </div>
+    <div class="stat-middle">
+      <div class="lboard">
+        <h1>卡路里排行榜</h1>
+        <div class="rank">16</div>
+        <h2>{{user.first_name}}{{user.last_name}}</h2>
+        <div class="rank">16</div>
+        <h2>{{user.first_name}}{{user.last_name}}</h2>
+        <div class="rank">16</div>
+        <h2>{{user.first_name}}{{user.last_name}}</h2>
+
+        <div class="rank myrank">16</div>
+        <h2 id="myrank">{{user.first_name}}{{user.last_name}}</h2>
+      </div>
+      <div class="lboard lboard-middle">
+        <h1>步行數排行榜</h1>
+        <div class="rank">16</div>
+        <h2>{{user.first_name}}{{user.last_name}}</h2>
+        <div class="rank">16</div>
+        <h2>{{user.first_name}}{{user.last_name}}</h2>
+        <div class="rank">16</div>
+        <h2>{{user.first_name}}{{user.last_name}}</h2>
+
+        <div class="rank myrank">16</div>
+        <h2 id="myrank">{{user.first_name}}{{user.last_name}}</h2>
+      </div>
+      <div class="lboard lboard-right">
+        <h1>睡眠量排行榜</h1>
+        <div class="rank">16</div>
+        <h2>{{user.first_name}}{{user.last_name}}</h2>
+        <div class="rank">16</div>
+        <h2>{{user.first_name}}{{user.last_name}}</h2>
+        <div class="rank">16</div>
+        <h2>{{user.first_name}}{{user.last_name}}</h2>
+
+        <div class="rank myrank">16</div>
+        <h2 id="myrank">{{user.first_name}}{{user.last_name}}</h2>
+      </div>
+    </div>
+    <div class="stat-bottom">
+      <div class="stat-info stat-info-left">
+        <div class="stat-btm-img"></div>
+        <div class="stat-btm-info">
+          <h2>運動達人</h2>
+          <p>
+            當你的卡路里消耗量 <br />
+            第一次獲得第一名的 <br />
+            時候(無論是昨日還是 <br />
+            平均),你就可以得到這 <br />
+            枚徽章.
+          </p>
+        </div>
+      </div>
+      <div class="stat-info stat-info-right">
+        <div class="stat-btm-img"></div>
+        <div class="stat-btm-info">
+          <h2>運動達人</h2>
+          <p>
+            當你的卡路里消耗量 <br />
+            第一次獲得第一名的 <br />
+            時候(無論是昨日還是 <br />
+            平均),你就可以得到這 <br />
+            枚徽章.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>

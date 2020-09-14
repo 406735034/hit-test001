@@ -1,0 +1,137 @@
+@font-face {
+  font-family: "cfont";
+  src: url(/static/webfonts/myfont.ttf);
+  font-style: normal;
+}
+.tab-body {
+  font-family: "cfont" !important;
+}
+
+.chart-top {
+  margin: 12px 55px;
+  position: relative;
+  height: 6%;
+  display: block;
+}
+
+.chart-top > a,
+.chart-top > a:visited,
+.chart-top:active {
+  text-decoration: none;
+}
+
+.chart-top .stat-btn {
+  border: 3px solid rgba(23, 68, 166, 1);
+  height: 40px;
+  width: 150px;
+  border-radius: 20px;
+  float: left;
+  margin-right: 20px;
+  cursor: pointer;
+  color: darkgreen;
+  display: block;
+}
+
+.chart-top .stat-btn > img {
+  float: left;
+  height: 26px;
+  width: 26px;
+  margin-top: 4px;
+  margin-left: 15px;
+}
+
+.chart-top .stat-btn #prg {
+  height: 23px;
+  width: 35px;
+  margin-top: 6px;
+}
+
+.chart-top .stat-btn > h2 {
+  font-size: 2rem;
+  line-height: 35px;
+  font-weight: 800;
+}
+
+.chart-middle {
+  /* background-color: red; */
+  position: relative;
+  display: block;
+  height: 520px;
+  margin-right: 10px;
+  margin-left: 10px;
+  margin-top: 15px;
+}
+
+.chart-top > a .compare {
+  width: 240px;
+  /* background-color: red; */
+}
+
+.chart-middle {
+  height: auto;
+  width: auto;
+}
+
+.chart-bottom {
+  margin-top: 5px;
+  height: 50px;
+  background-color: blue;
+  position: relative;
+  display: block;
+
+  padding-top: 10px;
+}
+
+.tabSideContainer .chart-btn {
+  height: 100%;
+  width: 15%;
+  /* background-color: red; */
+  float: left;
+  margin-left: 5px;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+}
+
+.sideButtonContainer {
+  height: 90%;
+  width: 80%;
+  margin-top: 35px;
+}
+
+.chart-btn .button {
+  padding: 54px 30px;
+  margin-left: 40px; /* Chart Buttons Margin */
+  list-style-type: none;
+  /* background-color: blue; */
+}
+
+.chart-btn .button:focus {
+  outline: 0;
+}
+
+.graph-btn1 {
+  border-radius: 40px 40px 0 0;
+  background-color: #18f927;
+}
+.graph-btn2 {
+  background-color: #ff1b13;
+}
+
+.graph-btn3 {
+  background-color: #ffb611;
+}
+
+.graph-btn4 {
+  background-color: #a4a4a4;
+  border-radius: 0 0 40px 40px;
+}
+
+.chartArea {
+  height: 520px;
+  width: 84%;
+  /* background-color: #ff1b13; */
+  float: right;
+  box-sizing: border-box;
+  display: none;
+}
