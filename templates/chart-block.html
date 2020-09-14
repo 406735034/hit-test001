@@ -1,0 +1,85 @@
+{% load static %}
+<head>
+  <!-- <link
+    rel="stylesheet"
+    type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.14/semantic.min.css"
+  /> -->
+  <!--Chart js-->
+
+  <link rel="stylesheet" href="{% static 'css/chart-block.css' %}" />
+</head>
+
+<body>
+  <div class="tab-body">
+    <div class="chart-top">
+      <a href="#">
+        <div class="stat-btn">
+          <img
+            src="{% static 'images/own-icons/calendar.png' %}"
+            alt=""
+            srcset=""
+          />
+          <h2>自己</h2>
+        </div>
+      </a>
+      <a href="#">
+        <div class="stat-btn">
+          <img
+            src="{% static 'images/own-icons/calendar.png' %}"
+            alt=""
+            srcset=""
+          />
+          <h2>同學</h2>
+        </div>
+      </a>
+      <a href="#">
+        <div class="stat-btn compare">
+          <img
+            src="{% static 'images/own-icons/progress.png' %}"
+            alt=""
+            srcset=""
+            id="prg"
+          />
+          <h2>與同學比較</h2>
+        </div>
+      </a>
+    </div>
+    <div class="chart-middle">
+      <div class="tabSideContainer">
+        <div class="chart-btn">
+          <div class="sideButtonContainer">
+            <button
+              class="button graph-btn1"
+              onclick="showSidePanel(0,'red')"
+            ></button>
+            <button
+              class="button graph-btn2"
+              onclick="showSidePanel(1,'green')"
+            ></button>
+            <button
+              class="button graph-btn3"
+              onclick="showSidePanel(2,'blue')"
+            ></button>
+            <button
+              class="button graph-btn4"
+              onclick="showSidePanel(3,'yellow')"
+            ></button>
+
+            <!-- <button onclick="showPanel(0,'#f44336')">單元學習</button>
+              <button onclick="showPanel(1,'#4caf50')">比較數據</button>
+              <button onclick="showPanel(2,'#2196f3')">遊戲相關</button>
+              <button onclick="showPanel(3,'#ff5722')">個人數據</button>
+              <button onclick="showPanel(4,'#f1c40f')">網站說明</button> -->
+          </div>
+        </div>
+        <div class="chartArea">{% include 'charts/chart.html'%}</div>
+        <div class="chartArea">2</div>
+        <div class="chartArea">3</div>
+        <div class="chartArea">4</div>
+      </div>
+    </div>
+    <div class="chart-bottom"></div>
+  </div>
+  <script src="{% static 'js/user-side-tab.js'%}"></script>
+</body>
