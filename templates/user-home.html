@@ -9,7 +9,7 @@
   <title>User Home</title>
 </head>
 <body>
-  <div class="main-container">
+  <div class="main-container" id="mainBlur">
     <div class="main-div">
       <div class="side-block">
         <div class="user-info">
@@ -29,8 +29,11 @@
             <div class="profile-data">
               <div class="user-left">
                 <div class="user-data">
-                  <a href="#"> <i class="fas fa-user-cog user-conf-btn"></i></a>
-                  <a href="#"><i class="fas fa-info info-btn"></i></a>
+                  <i
+                    class="fas fa-user-cog user-conf-btn"
+                    onclick="userPopUp(0)"
+                  ></i>
+                  ><i class="fas fa-info info-btn" onclick="userPopUp(1)"></i>
                   <div class="user-dp">
                     <img
                       src="{%static 'images/avatar_male.png'%}"
@@ -42,9 +45,12 @@
                   </div>
                 </div>
                 <div class="award-data">
-                  <a href="#"> <i class="fas fa-cog user-conf-btn"></i></a>
+                  <i
+                    class="fas fa-cog user-conf-btn"
+                    onclick="userPopUp(2)"
+                  ></i>
 
-                  <a href="#"><i class="fas fa-info info-btn"></i></a>
+                  <i class="fas fa-info info-btn" onclick="userPopUp(3)"></i>
                   <div class="award-pic">
                     <img src="{%static 'images/award1.jpg'%}" alt="" />
                     <p class="award-name">我就是你的盾牌</p>
@@ -110,6 +116,7 @@
           </div>
         </div>
       </div>
+
       <div class="main-block">
         <div class="tabContainer">
           <div class="buttonContainer">
@@ -133,7 +140,22 @@
       </div>
     </div>
   </div>
-
+  <div class="user-settings-pop" id="userPopup">
+    <h1>User Menu</h1>
+    <i class="fas fa-times-circle usrpop-close" onclick="userPopUp(0)"></i>
+  </div>
+  <div class="user-settings-pop" id="userPopup">
+    <h1>User-info</h1>
+    <i class="fas fa-times-circle usrpop-close" onclick="userPopUp(1)"></i>
+  </div>
+  <div class="user-settings-pop" id="userPopup">
+    <h1>Award Menu</h1>
+    <i class="fas fa-times-circle usrpop-close" onclick="userPopUp(2)"></i>
+  </div>
+  <div class="user-settings-pop" id="userPopup">
+    <h1>Award info</h1>
+    <i class="fas fa-times-circle usrpop-close" onclick="userPopUp(3)"></i>
+  </div>
   <script
     src="https://kit.fontawesome.com/3440ae8e61.js"
     crossorigin="anonymous"
@@ -156,6 +178,17 @@
         );
       });
     });
+
+    function userPopUp(dcode) {
+      var userpop = document.querySelectorAll(".user-settings-pop");
+      var allBlur = document.getElementById("mainBlur");
+      userpop.forEach(function (node) {
+        node.style.display = "none";
+      });
+      userpop[dcode].style.display = "block";
+      userpop[dcode].classList.toggle("show");
+      allBlur.classList.toggle("blractive");
+    }
   </script>
 </body>
 
