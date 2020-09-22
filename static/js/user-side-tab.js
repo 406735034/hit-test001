@@ -1,7 +1,7 @@
 var sideTabButtons = document.querySelectorAll(
-  ".tabSideContainer .chart-btn .sideButtonContainer button"
+  ".tabSideContainer .chart-btn .sideBtn .button"
 );
-var sideTabPanels = document.querySelectorAll(".tabSideContainer  .chartArea");
+var sideTabPanels = document.querySelectorAll(".tabSideContainer .chartArea");
 
 function showSidePanel(panelIndex) {
   // sideTabButtons.forEach(function (node) {
