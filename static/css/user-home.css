@@ -23,7 +23,7 @@ input {
   background-size: cover;
   min-height: 100%;
   position: relative;
-  z-index: 0;
+  z-index: -5;
   display: block;
 }
 
@@ -38,6 +38,7 @@ input {
   grid-gap: 10px;
   margin-bottom: 50px;
   position: relative;
+  z-index: 0;
   /* background-color: #eee; */
   /* opacity: 0.95; */
 }
@@ -240,11 +241,6 @@ input {
   border-top: 2px solid rgba(112, 112, 112, 1);
   width: 103%;
   margin-left: -2px;
-}
-
-a {
-  text-decoration: none;
-  color: rgba(112, 112, 112, 0.9);
 }
 
 .award-pic > img {

@@ -48,30 +48,29 @@
     <div class="chart-middle">
       <div class="tabSideContainer">
         <div class="chart-btn">
-          <div class="sideButtonContainer">
-            <button
-              class="button graph-btn1"
-              onclick="showSidePanel(0,'red')"
-            ></button>
-            <button
-              class="button graph-btn2"
-              onclick="showSidePanel(1,'green')"
-            ></button>
-            <button
-              class="button graph-btn3"
-              onclick="showSidePanel(2,'blue')"
-            ></button>
-            <button
-              class="button graph-btn4"
-              onclick="showSidePanel(3,'yellow')"
-            ></button>
-
-            <!-- <button onclick="showPanel(0,'#f44336')">單元學習</button>
-              <button onclick="showPanel(1,'#4caf50')">比較數據</button>
-              <button onclick="showPanel(2,'#2196f3')">遊戲相關</button>
-              <button onclick="showPanel(3,'#ff5722')">個人數據</button>
-              <button onclick="showPanel(4,'#f1c40f')">網站說明</button> -->
+          <div class="sideBtn">
+            <button class="button" onclick="showSidePanel(1,'green')">
+              類型
+            </button>
           </div>
+          <div class="sideBtn"></div>
+
+          <!-- <button
+            class="button graph-btn1"
+            onclick="showSidePanel(0,'red')"
+          ></button>
+          <button
+            class="button graph-btn2"
+            onclick="showSidePanel(1,'green')"
+          ></button>
+          <button
+            class="button graph-btn3"
+            onclick="showSidePanel(2,'blue')"
+          ></button>
+          <button
+            class="button graph-btn4"
+            onclick="showSidePanel(3,'yellow')"
+          ></button> -->
         </div>
         <div class="chartArea">{% include 'charts/chart.html'%}</div>
         <div class="chartArea">2</div>
