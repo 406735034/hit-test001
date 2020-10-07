@@ -42,7 +42,7 @@ ROOT_URLCONF = 'HitProject.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates'), os.path.join(BASE_DIR, 'health01/build')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -115,8 +115,7 @@ REST_FRAMEWORK = {
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'), os.path.join(
-        BASE_DIR, 'health01/build/static')
+    os.path.join(BASE_DIR, 'static'))
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
 
