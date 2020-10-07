@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.forms import inlineformset_factory
 from .models import *
-from django.contrib.auth.forms import UserCreationForm
+
 from django.contrib.auth.models import Group
 
 from django.contrib import messages
@@ -12,14 +12,28 @@ from django.contrib.auth import authenticate, login, logout
 
 from django.contrib.auth.decorators import login_required
 
-from .models import banddata
+
 from .forms import RegisterForm, ResetForm
 
 from .decorators import unauthenticated_user, allowed_users, admin_only
 
 from django.views.generic import TemplateView
 
-# Create your views here.
+# Rest Framework
+from rest_framework import viewsets
+
+from django.contrib.auth.models import User
+from .serializers import UserCreateSerializer, UserSerializer
+
+
+class UserCreateView(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserCreateSerializer
+
+
+class UserView(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
 
 
 @unauthenticated_user
@@ -49,7 +63,7 @@ def loginPage(request):
             login(request, user)
             return redirect('dashboard')
         else:
-            messages.info(request, 'Username or Password incorrect .... !!!!')
+            messages.info(request, '用戶名或密碼不正確 .... !!!!')
     return render(request, 'login.html')
 
 
@@ -58,7 +72,6 @@ def logoutUser(request):
     return redirect('login')
 
 
-@unauthenticated_user
 def register(request):
 
     form = RegisterForm()
@@ -66,10 +79,14 @@ def register(request):
         form = RegisterForm(request.POST)
         if form.is_valid():
             user = form.save()
+            username = form.cleaned_data.get('username')
             group = Group.objects.get(name='Students')
             user.groups.add(group)
-            username = form.cleaned_data.get('username')
+            StudentProfile.objects.create(studentname=user)
+            DailyActivity.objects.create(studentname=user)
+            Webdata.objects.create(studentname=user)
             messages.success(request, 'Account Created for ' + username)
+            return redirect('login')
         else:
             messages.error(request, 'Error')
 
@@ -80,48 +97,51 @@ def register(request):
 @login_required(login_url='login')
 @admin_only
 def dashboard(request):
-    data = banddata.objects.filter(male='Yes')
-    return render(request, 'home.html', {'datas': data})
+
+    return render(request, 'home.html')
 
 
 @login_required(login_url='login')
 @allowed_users(allowed_roles=['admins', 'Students'])
 def userPage(request):
-    user = userdata.objects.all()
-    context = {'users': user}
+    profile = StudentProfile.objects.get(studentname_id=request.user.id)
+    activity = DailyActivity.objects.get(studentname_id=request.user.id)
+    webdata = Webdata.objects.get(studentname_id=request.user.id)
+    if activity.today_calories < 100:
+        activity.is_today_calories = False
+    else:
+        activity.is_today_calories = True
+    if activity.today_steps < 100:
+        activity.is_today_steps = False
+    else:
+        activity.is_today_steps = True
+    if activity.today_sleep < 100:
+        activity.is_today_sleep = False
+    else:
+        activity.is_today_sleep = True
+    context = {'profile': profile, 'webdata': webdata, 'activity': activity}
     return render(request, 'user-home.html', context)
 
 
 @login_required(login_url='login')
 @allowed_users(allowed_roles=['admins', 'Students'])
 def userRecPage(request):
-    user = userdata.objects.all()
-    context = {'users': user}
-    return render(request, 'user-record.html', context)
+    return render(request, 'user-record.html')
 
 
 @login_required(login_url='login')
 @allowed_users(allowed_roles=['admins', 'Students'])
 def userAwards(request):
-    user = userdata.objects.all()
-    context = {'users': user}
-    return render(request, 'user-awards.html', context)
+    return render(request, 'user-awards.html')
 
 
 @login_required(login_url='login')
 @allowed_users(allowed_roles=['admins', 'Students'])
 def userRanks(request):
-    user = userdata.objects.all()
-    context = {'users': user}
     print('users')
-    return render(request, 'user-rankings.html', context)
+    return render(request, 'user-rankings.html')
 
 
 @login_required(login_url='login')
 def restrict(request):
     return render(request, 'restrict.html')
-
-
-@login_required(login_url='login')
-class ClubCharView(TemplateView):
-    template_name = 'charts/chart.html'

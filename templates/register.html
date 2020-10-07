@@ -1,105 +1,133 @@
-{% extends 'base.html' %}
-{% load static %}
-          {% block content %}
+{% extends 'base.html' %} {% load static %} {% block content %}
 
-<div class="main-wrapper ">
-       <br><br>
-        <div class="auth-wrapper d-flex no-block justify-content-center align-items-center col-md-auto " >
-            <div class="auth-wrapper border-top border-secondary col-md-3 " > <br>
-                
-                    <div class="text-center bg-dark titles" style="padding-top: 10px; padding-bottom: 10px">
-                        <span class="db"><i class="fas fa-user-plus"></i>&nbsp HIT User Register</span>
-                    </div>
-                   
-                    <form class="form-horizontal m-t-20" action="" method="POST">
-                       {%csrf_token%}
-                        <div class="row p-b-30" style="padding-top: 20px;">
-                            <div class="col-12">
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text bg-warning text-white" id="basic-addon1"><i class="fas fa-user"></i></span>
-                                    </div>
-                                {{form.first_name}}
-                                </div>
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text bg-inverse text-white" id="basic-addon1"><i class="fas fa-user-plus"></i></span>
-                                    </div>
-                                {{form.last_name}}
-                                </div>
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text bg-success text-white" id="basic-addon1"><i class="ti-user"></i></span>
-                                    </div>
-                                {{form.username}}
-                                </div>
-                               
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text bg-danger text-white" id="basic-addon1"><i class="ti-email"></i></span>
-                                    </div>
-                                    {{form.email}}
-                                </div>
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text bg-warning text-white" id="basic-addon2"><i class="fa fa-key"></i></span>
-                                    </div>
-                                    {{form.password1}}
-                                </div>
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text bg-info text-white" id="basic-addon2"><i class="fa fa-key"></i></span>
-                                    </div>
-                                    {{form.password2}}
-                                </div>
-                            </div>                           
-                        </div>                        
-                        <div class="row border-top border-secondary">
-                            <div class="col-12">
-                                <div class="form-group">
-                                    <div class="titles"> <br>
-                                        <button class="btn btn-block btn-lg btn-info" type="submit">Sign Up</button>
-                                    </div>
-                                    <div class="p-t-20">
-                                       <div class="message">Already have account? <a href="{% url 'login' %}">Login</a></div>
-                                    </div>
-                                    {% for message in messages%}
-                                        <p class="db" style="color:black;">{{message}}</p>
-                                    {% endfor %}
-                                </div>
-                            </div>
-                        </div>
-                    
-                    </form>
-                
+<div class="main-wrapper">
+  <br /><br />
+  <div
+    class="auth-wrapper d-flex no-block justify-content-center align-items-center col-md-auto"
+  >
+    <div class="auth-wrapper border-top border-secondary">
+      <br />
+
+      <div
+        class="text-center bg-dark titles"
+        style="padding-top: 10px; padding-bottom: 10px"
+      >
+        <span class="db"
+          ><i class="fas fa-user-plus"></i>&nbsp HIT User Register</span
+        >
+      </div>
+
+      <form class="form-horizontal" action="" method="POST">
+        {%csrf_token%}
+        <div class="row p-b-30" style="padding-top: 20px">
+          <div class="container-fluid">
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span
+                  class="input-group-text bg-warning text-white"
+                  id="basic-addon1"
+                  ><i class="fas fa-user"></i
+                ></span>
+              </div>
+              {{form.first_name}}
             </div>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span
+                  class="input-group-text bg-inverse text-white"
+                  id="basic-addon1"
+                  ><i class="fas fa-user-plus"></i
+                ></span>
+              </div>
+              {{form.last_name}}
+            </div>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span
+                  class="input-group-text bg-success text-white"
+                  id="basic-addon1"
+                  ><i class="ti-user"></i
+                ></span>
+              </div>
+              {{form.username}}
+            </div>
+
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span
+                  class="input-group-text bg-danger text-white"
+                  id="basic-addon1"
+                  ><i class="ti-email"></i
+                ></span>
+              </div>
+              {{form.email}}
+            </div>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span
+                  class="input-group-text bg-warning text-white"
+                  id="basic-addon2"
+                  ><i class="fa fa-key"></i
+                ></span>
+              </div>
+              {{form.password1}}
+            </div>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span
+                  class="input-group-text bg-info text-white"
+                  id="basic-addon2"
+                  ><i class="fa fa-key"></i
+                ></span>
+              </div>
+              {{form.password2}}
+            </div>
+          </div>
         </div>
-       
+        <div class="row border-top border-secondary">
+          <div class="col-12">
+            <div class="form-group">
+              <div class="titles">
+                <br />
+                <button class="btn btn-block btn-lg btn-info" type="submit">
+                  Sign Up
+                </button>
+              </div>
+              <div class="p-t-20">
+                <div class="message">
+                  Already have account? <a href="{% url 'login' %}">Login</a>
+                </div>
+              </div>
+              {% for message in messages%}
+              <p class="db" style="color: black">{{message}}</p>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </form>
     </div>
-    
-    <script src="{% static 'assets/libs/jquery/dist/jquery.min.js' %}"></script>
-  
-    <script src="{% static 'assets/libs/popper.js/dist/umd/popper.min.js' %}"></script>
-    <script src="{% static 'assets/libs/bootstrap/dist/js/bootstrap.min.js' %}"></script>
-    <script>
-    $('[data-toggle="tooltip"]').tooltip();
-    $(".preloader").fadeOut();
+  </div>
+</div>
 
-    
-    var form_fields = document.getElementsByTagName('input')
-    form_fields[1].placeholder = 'First Name';
-    form_fields[2].placeholder = 'Last Name';
-    form_fields[3].placeholder = 'Username';
-    form_fields[4].placeholder = 'Email Address';
-    form_fields[5].placeholder = 'Enter Password';
-    form_fields[6].placeholder = 'Confirm Password';
+<script src="{% static 'assets/libs/jquery/dist/jquery.min.js' %}"></script>
 
-    for (var field in form_fields){
-        form_fields[field].className += 'form-control form-control-lg'
-    }
+<script src="{% static 'assets/libs/popper.js/dist/umd/popper.min.js' %}"></script>
+<script src="{% static 'assets/libs/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+<script>
+  $('[data-toggle="tooltip"]').tooltip();
+  $(".preloader").fadeOut();
 
-    </script>
+  var form_fields = document.getElementsByTagName("input");
+  form_fields[1].placeholder = "First Name";
+  form_fields[2].placeholder = "Last Name";
+  form_fields[3].placeholder = "Username";
+  form_fields[4].placeholder = "Email Address";
+  form_fields[5].placeholder = "Enter Password";
+  form_fields[6].placeholder = "Confirm Password";
 
+  for (var field in form_fields) {
+    form_fields[field].className += "form-control form-control-lg";
+  }
+</script>
 
-  
-    {% endblock %}
+{% endblock %}

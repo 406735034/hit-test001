@@ -33,10 +33,8 @@ class RewardAdmin(admin.ModelAdmin):
         )
 
 
-admin.site.register(banddata)
-admin.site.register(Contact)
 admin.site.register(Reward, RewardAdmin)
 admin.site.register(Tag)
-admin.site.register(Workout)
-admin.site.register(userdata)
-admin.site.register(Club)
+admin.site.register(Webdata)
+admin.site.register(StudentProfile)
+admin.site.register(DailyActivity)

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Test Chart</title>
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+    <script src="http://code.highcharts.com/modules/exporting.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-1.12.4.js"
+      integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div
+      id="container"
+      style="min-width: 310px; height: 400px; margin: 0 auto"
+    ></div>
+
+    <input
+      type="radio"
+      name="mychart"
+      class="mychart"
+      id="column"
+      value="column"
+      onclick="chartfunc()"
+      checked
+    />Column
+    <input
+      type="radio"
+      name="mychart"
+      class="mychart"
+      id="bar"
+      value="bar"
+      onclick="chartfunc()"
+    />Bar
+    <input
+      type="radio"
+      name="mychart"
+      class="mychart"
+      id="pie"
+      value="pie"
+      onclick="chartfunc()"
+    />Pie
+    <input
+      type="radio"
+      name="mychart"
+      class="mychart"
+      id="line"
+      value="line"
+      onclick="chartfunc()"
+    />Line
+
+    <br />
+    Chart title:
+    <input type="text" id="chart_title" value="Chart Title" />
+    <input type="button" id="change_chart_title" value="Change" />
+  </body>
+  <script src="chart.js"></script>
+</html>
