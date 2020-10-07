@@ -1,6 +1,12 @@
-from django.urls import path
+from django.conf.urls import include
+from django.urls import path, include
 from . import views
 from django.contrib.auth import views as auth_views
+
+from rest_framework import routers
+
+router = routers.DefaultRouter()
+
 
 urlpatterns = [
     # Index
@@ -29,4 +35,6 @@ urlpatterns = [
     path('user-ranks/', views.userRanks, name='user-ranks'),
     # Warnings
     path('restrict/', views.restrict, name='restrict'),
+
+    path('route/', include(router.urls)),
 ]

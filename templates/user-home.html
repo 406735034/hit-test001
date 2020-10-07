@@ -1,14 +1,10 @@
-{% extends 'base.html' %} {% load static %} {% block content %}
+{% extends 'base.html' %} {% load static %} {% block head %}
+<link rel="stylesheet" href="{% static 'css/user-home.css' %}" />
+<title>User Home</title>
+{% endblock %} {% block content %}
 <!DOCTYPE html>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="{% static 'css/user-home.css' %}" />
-
-  <title>User Home</title>
-</head>
-<body>
+<div>
   <div class="main-container" id="mainBlur">
     <div class="main-div">
       <div class="side-block">
@@ -36,7 +32,7 @@
                   <i class="fas fa-info info-btn" onclick="userPopUp(1)"></i>
                   <div class="user-dp">
                     <img
-                      src="{%static 'images/avatar_male.png'%}"
+                      src="{{request.user.studentprofile.photo.url}}"
                       alt="user-dp"
                     />
                     <h5 class="user-name">
@@ -62,19 +58,40 @@
               <div class="prog-block">
                 <div class="prog-progress">
                   <p class="prog-title">昨日卡路里消耗</p>
-                  <progress max="100" value="80" class="prog-sleep"></progress>
+                  <div class="progress">
+                    <div
+                      class="progress-done"
+                      data-done="{{activity.yesterday_calories}}"
+                    >
+                      {{activity.yesterday_calories}}%
+                    </div>
+                  </div>
                 </div>
               </div>
               <div class="prog-block">
                 <div class="prog-progress">
-                  <p class="prog-title">昨日卡路里消耗</p>
-                  <div class="prog-graph graph2"></div>
+                  <p class="prog-title">昨日步數</p>
+                  <div class="progress">
+                    <div
+                      class="progress-done graph2"
+                      data-done="{{activity.yesterday_steps}}"
+                    >
+                      {{activity.yesterday_steps}}%
+                    </div>
+                  </div>
                 </div>
               </div>
               <div class="prog-block">
                 <div class="prog-progress">
-                  <p class="prog-title">昨日卡路里消耗</p>
-                  <div class="prog-graph graph3"></div>
+                  <p class="prog-title">昨日睡眠量</p>
+                  <div class="progress">
+                    <div
+                      class="progress-done graph3"
+                      data-done="{{activity.yesterday_sleep}}"
+                    >
+                      {{activity.yesterday_sleep}}%
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -84,14 +101,14 @@
           <h3 class="today-title">今日要完成的目標</h3>
           <div class="today-titles">
             <div class="title-set">
-              <div class="prog-dot dot1"></div>
-              <h5 class="dot-title title1">未完成</h5>
+              <div class="prog-dot dot1 {%if activity.is_today_calories %}  dot1done {% endif %}"></div>
+              <h5 class="dot-title title1">{%if activity.is_today_calories %}  完成 {% else %} 未完成 {% endif %}</h5>
               &emsp; &emsp;&ensp;
-              <div class="prog-dot dot2"></div>
-              <h5 class="dot-title title2">完成</h5>
+              <div class="prog-dot dot2 {%if activity.is_today_steps %}  dot2done {% endif %}"></div>
+              <h5 class="dot-title title2">{%if activity.is_today_steps %}完成 {% else %} 未完成 {% endif %}</h5>
               &emsp; &emsp;&ensp;
-              <div class="prog-dot dot3"></div>
-              <h5 class="dot-title title3">未完成</h5>
+              <div class="prog-dot dot3 {%if activity.is_today_sleep %}  dot3done {% endif %}"></div>
+              <h5 class="dot-title title3">{%if activity.is_today_sleep %} 完成 {% else %} 未完成 {% endif %}</h5>
               &emsp; &emsp;&ensp;
             </div>
           </div>
@@ -99,16 +116,31 @@
             <div class="chart">
               <ul class="bars">
                 <li>
-                  <div class="bar bar1" data-percentage="50"></div>
-                  <span style="color: #18f927 !important">C - 50%</span>
+                  <div
+                    class="bar bar1"
+                    data-percentage="{{activity.today_calories}}"
+                  ></div>
+                  <span style="color: #18f927 !important"
+                    >C -{{activity.today_calories}}%</span
+                  >
                 </li>
                 <li>
-                  <div class="bar bar2" data-percentage="100"></div>
-                  <span style="color: #ff1b13 !important">W - 100%</span>
+                  <div
+                    class="bar bar2"
+                    data-percentage="{{activity.today_steps}}"
+                  ></div>
+                  <span style="color: #ff1b13 !important"
+                    >W - {{activity.today_steps}}%</span
+                  >
                 </li>
                 <li>
-                  <div class="bar bar3" data-percentage="60"></div>
-                  <span style="color: #ffb611 !important">Z - 60%</span>
+                  <div
+                    class="bar bar3"
+                    data-percentage="{{activity.today_sleep}}"
+                  ></div>
+                  <span style="color: #ffb611 !important"
+                    >Z - {{activity.today_sleep}}%</span
+                  >
                 </li>
               </ul>
             </div>
@@ -125,15 +157,10 @@
             <button onclick="showPanel(2,'#2196f3')">遊戲相關</button>
             <button onclick="showPanel(3,'#ff5722')">個人數據</button>
             <button onclick="showPanel(4,'#f1c40f')">網站說明</button>
-            <!-- <button onclick="showPanel(0,'#f44336')">單元學習</button>
-            <button onclick="showPanel(1,'#4caf50')">比較數據</button>
-            <button onclick="showPanel(2,'#2196f3')">遊戲相關</button>
-            <button onclick="showPanel(3,'#ff5722')">個人數據</button>
-            <button onclick="showPanel(4,'#f1c40f')">網站說明</button> -->
           </div>
           <div class="tabPanel">{% include 'chart-block.html'%}</div>
           <div class="tabPanel">{% include 'statistics-block.html'%}</div>
-          <div class="tabPanel">{% include 'game-block.html'%}</div>
+          <div class="tabPanel">{% include 'lesson-block.html'%}</div>
           <div class="tabPanel">{% include 'chart-block.html'%}</div>
           <div class="tabPanel">{% include 'web-info.html'%}</div>
         </div>
@@ -164,7 +191,6 @@
     src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"
     charset="utf-8"
   ></script>
-  <script src="{% static 'js/user-tab.js'%}"></script>
 
   <script type="text/javascript">
     $(function () {
@@ -189,7 +215,21 @@
       userpop[dcode].classList.toggle("show");
       allBlur.classList.toggle("blractive");
     }
+
+    let allProgress = document.querySelectorAll(".progress-done");
+
+    allProgress.forEach(function (progress) {
+      progress.style.width = progress.getAttribute("data-done") + "%";
+      progress.style.opacity = 1;
+    });
+    // const progress = document.querySelectorAll(".progress-done");
+    // progress.style.width = progress.getAttribute("data-done") + "%";
+    // progress.style.opacity = 1;
   </script>
-</body>
+ 
+  </script>
+  <script src="{% static 'js/user-tab.js'%}"></script>
+  <div class="height"></div>
+</div>
 
 {% endblock %}

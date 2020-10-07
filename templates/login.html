@@ -1,18 +1,18 @@
 {% extends 'base.html' %}
 {% load static %}
-          {% block content %}
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="{% static 'css/login.css' %}" />
-    <script src="https://kit.fontawesome.com/3440ae8e61.js" crossorigin="anonymous"></script>
-    <title>Login Page</title>
-  </head>
-  <body>
-   <div class="outer">
-    <div class="login-block">
+         
+    
+   {% block head %}
+   <title>Login Page</title>
+   {% endblock %}
+    
+   
+ 
+    {% block content %}
+   
+  
+      <div class="mx-auto my-auto">
+        <div class="login-block my-auto">
           <form action="" class="sign-in-form" method="POST">
             {%csrf_token%}
             <h2 class="title">登入</h2>
@@ -26,12 +26,12 @@
             </div>
             <input type="submit" value="登入" class="login-btn solid" />
             <p class="forgot-hint"><a href="{% url 'reset_password'%}"><i class="fa fa-lock m-r-5" ></i> 忘記密碼？</a></p>
-            <p>{% for message in messages%}
-                <p class="db" style="color:black;">{{message}}</p>
+            <p ">{% for message in messages%}
+                <p class="db" style="color:red;"><strong>{{message}}</strong></p>
             {% endfor %}</p>
           </form>
       </div>
+      
    </div>
-  </body>
-</html>
+
 {% endblock %}

@@ -1,3 +1,9 @@
+@font-face {
+  font-family: "cfont";
+  src: url(/static/webfonts/myfont.ttf);
+  font-style: normal;
+}
+
 html {
   position: relative;
   min-height: 100%;
@@ -5,8 +11,25 @@ html {
 
 body {
   background-color: #d4f3ef;
+
+  background: url(/static/images/BG-green.png) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  margin-bottom: 80px;
+  position: relative;
   /* background: #e74c3c; */
   /* background: linear-gradient(90deg, #7d5fff 0%, #c56cf0 35%, #32ff7e 100%); */
+}
+
+body,
+input {
+  font-family: "LiGothic", "FangSong", Arial, serif;
+}
+
+.bodyheight {
+  min-height: 75vh;
 }
 
 .wrapper {
@@ -16,12 +39,15 @@ body {
 }
 
 .navbar-brand img {
-  height: 60px;
+  height: 80px;
   width: auto;
   padding-left: 40px;
 }
 
 .navbar {
+  font-family: "cfont";
+  font-size: 1.5rem;
+  font-weight: 600;
   /* background: linear-gradient(90deg, #7d5fff 0%, #c56cf0 35%, #32ff7e 100%); */
   background-color: #d4f3ef;
 }
@@ -35,11 +61,6 @@ body {
   text-align: center;
 }
 
-.banner img {
-  height: 100%;
-  width: 100%;
-}
-
 .message {
   text-align: center;
 }
@@ -48,22 +69,6 @@ body {
   padding-top: 10px;
   padding-bottom: 10px;
   font-family: cursive;
-}
-.footer {
-  height: 40px;
-  width: 100%;
-  /* background: linear-gradient(90deg, #7d5fff 0%, #c56cf0 35%, #32ff7e 100%); */
-  background-color: #d4f3ef;
-  color: #747d8c;
-  text-align: center;
-  font-weight: 600;
-  padding-bottom: 30px;
-  padding-top: 10px;
-  font-size: 1em;
-  position: fixed;
-  bottom: 0;
-  align-items: center;
-  justify-content: center;
 }
 
 .header {
@@ -74,4 +79,25 @@ body {
   list-style-type: none;
   padding: 0;
   margin: 0;
+}
+
+.height {
+  height: 85px;
+  display: block;
+}
+
+.page-footer {
+  width: 100%;
+  /* background: linear-gradient(90deg, #7d5fff 0%, #c56cf0 35%, #32ff7e 100%); */
+  background-color: #d4f3ef;
+  color: #747d8c;
+  text-align: center;
+  font-weight: 600;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  font-size: 1em;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
