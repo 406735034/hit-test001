@@ -189,7 +189,7 @@ input {
 .user-conf-btn {
   float: left;
   margin: -2px;
-  padding: 8px 5px;
+  padding: 5px 5px;
   padding-right: 3px;
   line-height: 8px;
   width: 28px;
@@ -225,15 +225,15 @@ input {
 }
 
 .user-dp > img {
-  height: 108px;
-  width: auto;
+  height: 100px;
+  width: 100px;
   position: relative;
   z-index: -1;
-  margin: auto;
+  margin: 0 auto;
   margin-top: -25px;
-  padding-top: 5px;
-  margin-left: 9px;
-  margin-right: -13px;
+  padding: 5px 5px;
+  margin-left: 15%;
+  border-radius: 50%;
 }
 
 .user-name {
@@ -554,13 +554,12 @@ a {
 .user-settings-pop {
   position: absolute;
   z-index: 6 !important;
-  height: 600px;
-  width: 550px;
-  left: 37%;
-  top: 23%;
-  background-color: #ffffff;
-  border-radius: 30px;
-  border: 3px solid rgba(23, 68, 166, 1);
+  height: 55%;
+  width: 90%;
+  margin: auto;
+  top: 15%;
+  background-color: transparent;
+
   visibility: hidden;
   text-align: center;
   align-items: center;
@@ -583,10 +582,17 @@ a {
 }
 
 .usrpop-close {
-  position: relative;
-  float: right;
-  padding: 20px;
-  font-size: 2rem;
+  position: absolute;
+  top: 3px;
+  right: 5px;
+  padding: 5px;
+  font-size: 1.5rem;
   color: red;
   cursor: pointer;
+}
+
+.popup-card {
+  border-radius: 30px !important;
+  border: 3px solid rgba(23, 68, 166, 1) !important;
+  font-family: "cfont";
 }
