@@ -7,7 +7,7 @@
 
 .lesson-div {
   display: flex;
-  height: 90%;
+  height: 75%;
   width: 85%;
   border: 4px solid rgba(23, 68, 166, 1);
   margin: auto;

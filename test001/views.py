@@ -13,7 +13,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
 
-from .forms import RegisterForm, ResetForm
+from .forms import RegisterForm, StudentForm
 
 from .decorators import unauthenticated_user, allowed_users, admin_only
 
@@ -94,9 +94,19 @@ def dashboard(request):
 @login_required(login_url='login')
 @allowed_users(allowed_roles=['admins', 'Students'])
 def userPage(request):
+
     profile = StudentProfile.objects.get(studentname_id=request.user.id)
     activity = DailyActivity.objects.get(studentname_id=request.user.id)
     webdata = Webdata.objects.get(studentname_id=request.user.id)
+    form = StudentForm()
+
+    if request.method == 'POST':
+        form = StudentForm(request.POST, request.FILES, instance=profile)
+        if form.is_valid():
+            form.save()
+        else:
+            messages.error(request, 'Error')
+
     if activity.today_calories < 100:
         activity.is_today_calories = False
     else:
@@ -109,7 +119,8 @@ def userPage(request):
         activity.is_today_sleep = False
     else:
         activity.is_today_sleep = True
-    context = {'profile': profile, 'webdata': webdata, 'activity': activity}
+    context = {'profile': profile, 'webdata': webdata,
+               'activity': activity, 'form': form}
     return render(request, 'user-home.html', context)
 
 

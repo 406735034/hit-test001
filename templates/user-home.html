@@ -10,7 +10,7 @@
       <div class="side-block">
         <div class="user-info">
           <div class="top-title">
-            <span class="school-name">淡江大學</span>
+            <span class="school-name">{{profile.School}}</span>
             <span class="user-role"
               ><img
                 src="{% static 'images/own-icons/book.png' %}"
@@ -160,28 +160,112 @@
           </div>
           <div class="tabPanel">{% include 'chart-block.html'%}</div>
           <div class="tabPanel">{% include 'statistics-block.html'%}</div>
+          <div class="tabPanel">{% include 'game-block.html'%}</div>
           <div class="tabPanel">{% include 'lesson-block.html'%}</div>
-          <div class="tabPanel">{% include 'chart-block.html'%}</div>
           <div class="tabPanel">{% include 'web-info.html'%}</div>
         </div>
       </div>
     </div>
   </div>
+  <div class="user-settings-pop user-settings" id="userPopup">  
+    
+    <div class="row h-100">
+      <div class="card popup-card col-9 mx-auto my-auto">
+        <i class="fas fa-times-circle usrpop-close" onclick="userPopUp(0)"></i>
+        <div class="card-body">
+          <style>
+            .profile-pic{
+              max-width: 200px;
+              max-height:200px;
+              margin: 0 auto;
+              border-radius: 50%;
+            }
+          </style>
+          
+          <br>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="card card-body">
+                <a class="btn btn-warning" href="{% url 'user-page' %}"> &#8592; 回室首頁</a>
+                <hr>
+                <h3 style="text-align: center">帳號設定</h3>
+                <hr>
+                <img class="profile-pic" src="{{request.user.studentprofile.photo.url}}" >
+              
+              </div>
+            </div>
+            <div class="col-md-8">
+              <div class="card card-body">
+                
+                <form method="POST" action="" enctype="multipart/form-data">
+                  {% csrf_token %}
+                  {{form.as_p}}
+              
+                <input class="btn btn-primary" type="submit" name="Update Information">
+                </form>
+              </div>
+            </div>
+          </div>  
+        </div>
+      </div>
+     </div>  
+  </div>  
+   
   <div class="user-settings-pop" id="userPopup">
-    <h1>User Menu</h1>
-    <i class="fas fa-times-circle usrpop-close" onclick="userPopUp(0)"></i>
+    <div class="row h-100">
+      <div class="card popup-card col-5 mx-auto my-auto">
+        <i class="fas fa-times-circle usrpop-close" onclick="userPopUp(1)"></i>
+        <div class="card-body ">
+          <table class="table  table-borderless">
+            <h1 class="h2 text-center">用戶信息</h1>
+            <thead>
+              <tr>                
+                <th scope="col" class="h5 text-right pt-2">用戶姓名:</th>
+                <th scope="col" class="h5 text-left pt-2">{{user.first_name}}{{user.last_name}}</th>                
+              </tr>
+              <tr>                
+                <th scope="col" class="h5 text-right pt-0">用戶ID:</th>
+                <th scope="col" class="h5 text-left pt-0">{{user.username}}</th>                
+              </tr>
+              <tr>                
+                <th scope="col" class="h5 text-right pt-0">學號:</th>
+                <th scope="col" class="h5 text-left pt-0">{{profile.RollNo}}</th>                
+              </tr>
+              <tr>                
+                <th scope="col" class="h5 text-right pt-0">班別:</th>
+                <th scope="col" class="h5 text-left pt-0">{{profile.Class}}{{profile.Section}}</th>                
+              </tr>
+              <tr>                
+                <th scope="col" class="h5 text-right pt-0">學校:</th>
+                <th scope="col" class="h5 text-left pt-0">{{profile.School}}</th>                
+              </tr>
+              
+            </thead>
+            
+          </table>
+        </div>
+      </div>
+     </div>  
   </div>
   <div class="user-settings-pop" id="userPopup">
-    <h1>User-info</h1>
-    <i class="fas fa-times-circle usrpop-close" onclick="userPopUp(1)"></i>
+    <div class="row h-100">
+      <div class="card popup-card col-9 mx-auto my-auto">
+        <i class="fas fa-times-circle usrpop-close" onclick="userPopUp(2)"></i>
+        <div class="card-body">
+          
+        </div>
+      </div>
+     </div>  
   </div>
   <div class="user-settings-pop" id="userPopup">
-    <h1>Award Menu</h1>
-    <i class="fas fa-times-circle usrpop-close" onclick="userPopUp(2)"></i>
-  </div>
-  <div class="user-settings-pop" id="userPopup">
-    <h1>Award info</h1>
-    <i class="fas fa-times-circle usrpop-close" onclick="userPopUp(3)"></i>
+    <div class="row h-100">
+      <div class="card popup-card col-6 mx-auto my-auto">
+        <i class="fas fa-times-circle usrpop-close" onclick="userPopUp(3)"></i>
+        <div class="card-body">
+          
+        </div>
+      </div>
+     </div>  
   </div>
   <script
     src="https://kit.fontawesome.com/3440ae8e61.js"

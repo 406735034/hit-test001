@@ -24,10 +24,14 @@ class StudentProfile(models.Model):
                               default="naa.png")
     account = models.CharField(max_length=100)
     userId = models.CharField(max_length=255)
-    birthday = models.DateField(null=True)
-    weight = models.FloatField(null=True)
-    height = models.FloatField(null=True)
+    birthday = models.DateField(null=True, blank=True)
+    weight = models.FloatField(null=True, blank=True)
+    height = models.FloatField(null=True, blank=True)
     BMI = models.FloatField(null=True)
+    School = models.CharField(max_length=30, null=True, default="淡江大學")
+    Class = models.CharField(max_length=30, null=True)
+    Section = models.CharField(max_length=30, null=True)
+    RollNo = models.IntegerField(default=0)
 
     def __str__(self):
         return self.studentname.username

@@ -22,5 +22,4 @@ class ResetForm(PasswordResetForm):
 class StudentForm(ModelForm):
     class Meta:
         model = StudentProfile
-        fields = "__all__"
-        exclude = ['studentname']
+        fields = ['photo', 'birthday', 'weight', 'height']
