@@ -1,0 +1,9 @@
+@font-face {
+  font-family: "cfont";
+  src: url(/static/webfonts/myfont.ttf);
+  font-style: normal;
+}
+body,
+input {
+  font-family: "cfont";
+}

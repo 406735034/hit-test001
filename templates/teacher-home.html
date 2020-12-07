@@ -1,0 +1,328 @@
+{% extends 'base.html' %} {% load static %} {% block head %}
+<!-- <link rel="stylesheet" href="{% static 'css/user-home.css' %}" />  media="screen and (min-width: 1080px)"  -->
+<link rel="stylesheet" type="text/css"  href="{% static 'css/user-home.css' %}"> 
+<title>User Home</title>
+<style>
+  .user-home{
+    background: url(/static/images/BG-green.png) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+  </style>
+{% endblock %}
+
+{% block content %}
+
+
+<div class="user-home"> 
+  <div class="main-container" id="mainBlur">
+    <div class="main-div">
+      <div class="side-block">
+        <div class="user-info">
+          <div class="top-title">
+            <span class="school-name">{{profile.School}}</span>
+            <span class="user-role"
+              ><img
+                src="{% static 'images/own-icons/book.png' %}"
+                alt="user-role"
+                srcset=""
+              />
+
+              <h2>老師</h2></span
+            >
+          </div>
+          <div class="user-profile">
+            <div class="profile-data">
+              <div class="user-left">
+                <div class="user-data">
+                  <i
+                    class="fas fa-user-cog user-conf-btn"
+                    onclick="userPopUp(0)"
+                  ></i>
+                  <i class="fas fa-info info-btn" onclick="userPopUp(1)"></i>
+                  <div class="user-dp">
+                    <img
+                      src="{{request.user.studentprofile.photo.url}}"
+                      alt="user-dp"
+                    />
+                    <h5 class="user-name">
+                      {{user.first_name}}&nbsp;{{user.last_name}}
+                    </h5>
+                  </div>
+                </div>
+                <div class="award-data">
+                  <i
+                    class="fas fa-cog user-conf-btn"
+                    onclick="userPopUp(2)"
+                  ></i>
+
+                  <i class="fas fa-info info-btn" onclick="userPopUp(3)"></i>
+                  <div class="award-pic">
+                    <img src="{%static 'images/award1.jpg'%}" alt="" />
+                    <p class="award-name">盾牌</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="earlier-data">
+              <div class="prog-block">
+                <div class="prog-progress">
+                  <p class="prog-title" >昨日全校卡路里消耗</p>
+                  <div class="progress">
+                    <div
+                      class="progress-done"
+                      data-done="{{activity.yesterday_calories}}"
+                    >
+                      {{activity.yesterday_calories}}%
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="prog-block">
+                <div class="prog-progress">
+                  <p class="prog-title">昨日全校步數</p>
+                  <div class="progress">
+                    <div
+                      class="progress-done graph2"
+                      data-done="{{activity.yesterday_steps}}"
+                    >
+                      {{activity.yesterday_steps}}%
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="prog-block">
+                <div class="prog-progress">
+                  <p class="prog-title">昨日全校睡眠量</p>
+                  <div class="progress">
+                    <div
+                      class="progress-done graph3"
+                      data-done="{{activity.yesterday_sleep}}"
+                    >
+                      {{activity.yesterday_sleep}}%
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="today-prog">
+          <h3 class="today-title">今日全校的目標</h3>
+          <div class="today-titles">
+            <div class="title-set">
+              <div class="prog-dot dot1 {%if activity.is_today_calories %}  dot1done {% endif %}"></div>
+              <h5 class="dot-title title1">{%if activity.is_today_calories %}  完成 {% else %} 未完成 {% endif %}</h5>
+              &emsp; &emsp;&ensp;
+              <div class="prog-dot dot2 {%if activity.is_today_steps %}  dot2done {% endif %}"></div>
+              <h5 class="dot-title title2">{%if activity.is_today_steps %}完成 {% else %} 未完成 {% endif %}</h5>
+              &emsp; &emsp;&ensp;
+              <div class="prog-dot dot3 {%if activity.is_today_sleep %}  dot3done {% endif %}"></div>
+              <h5 class="dot-title title3">{%if activity.is_today_sleep %} 完成 {% else %} 未完成 {% endif %}</h5>
+              &emsp; &emsp;&ensp;
+            </div>
+          </div>
+          <div class="vert-graph">
+            <div class="chart">
+              <ul class="bars">
+                <li>
+                  <div
+                    class="bar bar1"
+                    data-percentage="{{activity.today_calories}}"
+                  ></div>
+                  <span style="color: #18f927 !important"
+                    >C -{{activity.today_calories}}%</span
+                  >
+                </li>
+                <li>
+                  <div
+                    class="bar bar2"
+                    data-percentage="{{activity.today_steps}}"
+                  ></div>
+                  <span style="color: #ff1b13 !important"
+                    >W-{{activity.today_steps}}%</span
+                  >
+                </li>
+                <li>
+                  <div
+                    class="bar bar3"
+                    data-percentage="{{activity.today_sleep}}"
+                  ></div>
+                  <span style="color: #ffb611 !important"
+                    >Z - {{activity.today_sleep}}%</span
+                  >
+                </li>
+              </ul>
+            </div>
+            <!--chart end-->
+          </div>
+        </div>
+      </div>
+
+      <div class="main-block">
+        <div class="tabContainer">
+          <div class="buttonContainer">
+            <button onclick="showPanel(0,'#f44336')">Statistics</button>
+            <button onclick="showPanel(1,'#4caf50')">Performance</button>
+            <!-- <button onclick="showPanel(2,'#2196f3')">遊戲相關</button>
+            <button onclick="showPanel(3,'#a55eea')">個人數據</button> -->
+          </div>
+         
+          <div class="tabPanel">{% include 'teacher-statistics.html'%}</div>
+          <div class="tabPanel">{% include 'teacher-dash.html'%}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="user-settings-pop user-settings" id="userPopup">  
+    
+    <div class="row h-100">
+      <div class="card popup-card col-9 mx-auto my-auto">
+        <i class="fas fa-times-circle usrpop-close" onclick="userPopUp(0)"></i>
+        <div class="card-body">
+          <style>
+            .profile-pic{
+              max-width: 200px;
+              max-height:200px;
+              margin: 0 auto;
+              border-radius: 50%;
+            }
+          </style>
+          
+          <br>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="card card-body">
+                <a class="btn btn-warning" href="{% url 'user-page' %}"> &#8592; 回室首頁</a>
+                <hr>
+                <h3 style="text-align: center">帳號設定</h3>
+                <hr>
+                <img class="profile-pic" src="{{request.user.studentprofile.photo.url}}" >
+              
+              </div>
+            </div>
+            <div class="col-md-8">
+              <div class="card card-body">
+                
+                <form method="POST" action="" enctype="multipart/form-data">
+                  {% csrf_token %}
+                  {{form.as_p}}
+              
+                <input class="btn btn-primary" type="submit" name="Update Information">
+                </form>
+              </div>
+            </div>
+          </div>  
+        </div>
+      </div>
+     </div>  
+  </div>  
+   
+  <div class="user-settings-pop" id="userPopup">
+    <div class="row h-100">
+      <div class="card popup-card col-5 mx-auto my-auto">
+        <i class="fas fa-times-circle usrpop-close" onclick="userPopUp(1)"></i>
+        <div class="card-body ">
+          <table class="table  table-borderless">
+            <h1 class="h2 text-center">用戶信息</h1>
+            <thead>
+              <tr>                
+                <th scope="col" class="h5 text-right pt-2">用戶姓名:</th>
+                <th scope="col" class="h5 text-left pt-2">{{user.first_name}}{{user.last_name}}</th>                
+              </tr>
+              <tr>                
+                <th scope="col" class="h5 text-right pt-0">用戶ID:</th>
+                <th scope="col" class="h5 text-left pt-0">{{user.username}}</th>                
+              </tr>
+              <tr>                
+                <th scope="col" class="h5 text-right pt-0">學號:</th>
+                <th scope="col" class="h5 text-left pt-0">{{profile.RollNo}}</th>                
+              </tr>
+              <tr>                
+                <th scope="col" class="h5 text-right pt-0">班別:</th>
+                <th scope="col" class="h5 text-left pt-0">{{profile.Class}}{{profile.Section}}</th>                
+              </tr>
+              <tr>                
+                <th scope="col" class="h5 text-right pt-0">學校:</th>
+                <th scope="col" class="h5 text-left pt-0">{{profile.School}}</th>                
+              </tr>
+              
+            </thead>
+            
+          </table>
+        </div>
+      </div>
+     </div>  
+  </div>
+  <div class="user-settings-pop" id="userPopup">
+    <div class="row h-100">
+      <div class="card popup-card col-9 mx-auto my-auto">
+        <i class="fas fa-times-circle usrpop-close" onclick="userPopUp(2)"></i>
+        <div class="card-body">
+          
+        </div>
+      </div>
+     </div>  
+  </div>
+  <div class="user-settings-pop" id="userPopup">
+    <div class="row h-100">
+      <div class="card popup-card col-6 mx-auto my-auto">
+        <i class="fas fa-times-circle usrpop-close" onclick="userPopUp(3)"></i>
+        <div class="card-body">
+          
+        </div>
+      </div>
+     </div>  
+  </div>
+  <script
+    src="https://kit.fontawesome.com/3440ae8e61.js"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"
+    charset="utf-8"
+  ></script>
+
+  <script type="text/javascript">
+    $(function () {
+      $(".bars li .bar").each(function (key, bar) {
+        var percentage = $(this).data("percentage");
+        $(this).animate(
+          {
+            height: percentage * 0.9 + "%",
+          },
+          1000
+        );
+      });
+    });
+
+    function userPopUp(dcode) {
+      var userpop = document.querySelectorAll(".user-settings-pop");
+      var allBlur = document.getElementById("mainBlur");
+      userpop.forEach(function (node) {
+        node.style.display = "none";
+      });
+      userpop[dcode].style.display = "block";
+      userpop[dcode].classList.toggle("show");
+      allBlur.classList.toggle("blractive");
+    }
+
+    let allProgress = document.querySelectorAll(".progress-done");
+
+    allProgress.forEach(function (progress) {
+      progress.style.width = progress.getAttribute("data-done") + "%";
+      progress.style.opacity = 1;
+    });
+    // const progress = document.querySelectorAll(".progress-done");
+    // progress.style.width = progress.getAttribute("data-done") + "%";
+    // progress.style.opacity = 1;
+  </script>
+ 
+  </script>
+  <script src="{% static 'js/user-tab.js'%}"></script>
+  <div class="height"></div>
+</div>
+
+{% endblock %}

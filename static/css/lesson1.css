@@ -1,0 +1,202 @@
+* {
+  margin: 0;
+  padding: 0;
+  overflow-y: hidden;
+}
+body {
+  background: #eba426;
+  color: #444;
+  font-size: 12px;
+  color: #333;
+  font-family: "Oswald", sans-serif;
+  background: url(/static/lesson1images/backGroundImgURL.jpg) no-repeat center
+    center fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+}
+
+.booklet {
+  width: 900px;
+  height: 350px;
+  position: relative;
+  margin: 0 auto 10px;
+  -moz-box-shadow: 0px 0px 1px #fff;
+  -webkit-box-shadow: 0px 0px 1px #fff;
+  box-shadow: 0px 0px 1px #fff;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+}
+.booklet .b-wrap-left {
+  /* background: #fff url(lesson1{% static 'lesson1images/left_bg.jpg) no-repeat top left; */
+  -webkit-border-top-left-radius: 10px;
+  -webkit-border-bottom-left-radius: 10px;
+  -moz-border-radius-topleft: 10px;
+  -moz-border-radius-bottomleft: 10px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+.booklet .b-wrap-right {
+  /* background: #efefef url(lesson1{% static 'lesson1images/right_bg.jpg) no-repeat top left; */
+  -webkit-border-top-right-radius: 10px;
+  -webkit-border-bottom-right-radius: 10px;
+  -moz-border-radius-topright: 10px;
+  -moz-border-radius-bottomright: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+.booklet .b-counter {
+  bottom: 0px;
+  position: absolute;
+  display: block;
+  width: 90%;
+  height: 20px;
+  border-top: 1px solid #ddd;
+  color: #222;
+  text-align: center;
+  font-size: 12px;
+  padding: 5px 0 0;
+  background: transparent;
+  -moz-box-shadow: 0px -1px 1px #fff;
+  -webkit-box-shadow: 0px -1px 1px #fff;
+  box-shadow: 0px -1px 1px #fff;
+  opacity: 0.8;
+}
+.book_wrapper {
+  margin: auto;
+  margin-left: 30px;
+  padding-top: 90px;
+  width: 95%;
+  padding-right: 90px;
+  height: 590px;
+  position: relative;
+  overflow: hidden;
+  /* background: transparent url(static/lesson1images/bg.PNG) no-repeat 9px 27px; */
+}
+.book_wrapper h1 {
+  color: orange;
+  margin: 5px 5px 5px 15px;
+  font-size: 24px;
+  background: transparent url(/static/lesson1images/h1.PNG) no-repeat bottom
+    left;
+  padding-bottom: 7px;
+  text-transform: uppercase;
+  font-weight: normal;
+}
+.book_wrapper p {
+  font-size: 15px;
+  margin: 5px 5px 5px 15px;
+}
+.book_wrapper a.article,
+.book_wrapper a.demo {
+  background: transparent url(/static/lesson1images/circle.PNG) no-repeat 50%
+    0px;
+  display: block;
+  width: 95px;
+  height: 41px;
+  text-decoration: none;
+  outline: none;
+  font-size: 16px;
+  color: #555;
+  float: left;
+  line-height: 41px;
+  padding-left: 47px;
+}
+.book_wrapper a.demo {
+  margin-left: 50px;
+}
+.book_wrapper a.article:hover,
+.book_wrapper a.demo:hover {
+  background-position: 50% -41px;
+  color: #13386a;
+}
+.book_wrapper img {
+  margin: 0px 0px 0px 0px;
+  width: 740px;
+  height: auto;
+  padding: 4px;
+  border: 1px solid #ddd;
+  -moz-box-shadow: 1px 1px 1px #fff;
+  -webkit-box-shadow: 1px 1px 1px #fff;
+  box-shadow: 1px 1px 1px #fff;
+}
+.booklet .b-wrap-right img {
+  border: 1px solid #e6e3c2;
+}
+a#next_page_button,
+a#prev_page_button {
+  bottom: 0px;
+  display: none;
+  position: absolute;
+  width: 50px;
+  height: 45px;
+  cursor: pointer;
+  /* margin-top: -20px; */
+  /* top: 50%; */
+  background: transparent url(/static/lesson1images/buttons.PNG) no-repeat 0px
+    0px;
+}
+a#prev_page_button {
+  left: 650px;
+}
+a#next_page_button {
+  right: 650px;
+  background-position: -50px 0px;
+}
+a#next_page_button:hover {
+  background: transparent url(/static/lesson1images/buttonshover.PNG) no-repeat
+    0px 0px;
+  bottom: 0px;
+  width: 60px;
+  height: 54px;
+  background-position: -60px 0px;
+}
+a#prev_page_button:hover {
+  background: transparent url(/static/lesson1images/buttonshover.PNG) no-repeat
+    0px 0px;
+  bottom: 0px;
+  width: 60px;
+  height: 54px;
+  background-position: 0px 0px;
+}
+a#next_page_button:active {
+  background: transparent url(/static/lesson1images/buttonclick.PNG) no-repeat
+    0px 0px;
+  bottom: -9px;
+  width: 50px;
+  background-position: -50px 0px;
+}
+a#prev_page_button:active {
+  background: transparent url(static/lesson1images/buttonclick.PNG) no-repeat
+    0px 0px;
+  bottom: -9px;
+  width: 50px;
+  background-position: 0px 0px;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.backbutton {
+  height: 50px;
+  width: 120px;
+  font-size: 1.5rem;
+  line-height: 30px;
+  margin: 10px 20px;
+  cursor: pointer;
+  text-decoration: none;
+  border-radius: 15%;
+}
+
+.backbutton > i {
+  font-size: 2rem;
+  float: left;
+  margin-left: 10px;
+}
+
+button:hover {
+  background-color: #13386a;
+  color: white;
+}

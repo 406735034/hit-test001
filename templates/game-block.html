@@ -8,7 +8,7 @@
     <div class="title-section">
       <div class="game-inner-div">
         <div class="game-user-icon">
-          <img src="{%static 'images/naa.png'%}" alt="" />
+          <img src="{{request.user.studentprofile.photo.url}}" alt="" />
           <div class="game-level"><h3>LV: 1 冒險新兵</h3></div>
           <div class="game-level-skew"></div>
           <div class="game-user">
@@ -20,7 +20,9 @@
     </div>
     <div class="title-section">
       <div class="game-inner-div">
-        <button class="game-start-button">進入冒險世界!</button>
+        <a href="/game/"
+          ><button class="game-start-button">進入冒險世界!</button></a
+        >
       </div>
     </div>
     <div class="title-section">

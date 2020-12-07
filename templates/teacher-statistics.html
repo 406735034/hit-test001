@@ -1,0 +1,79 @@
+{% load static %}
+<head>
+  <link rel="stylesheet" href="{% static 'css/statistics-block.css' %}" />
+  <link
+    rel="stylesheet"
+    href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"
+  />
+  <style>
+    .small-box {
+      border-radius: 10px;
+      min-height: 145px;
+    }
+    .small-box a {
+      color: black;
+      text-decoration: none;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="tab-body">
+    <div class="row container ml-1 mt-3">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-3 col-6">
+            <div class="small-box bg-info">
+              <div class="inner">
+                <p>Classes</p>
+                <h1>3</h1>
+              </div>
+
+              <a href="#" class="small-box-footer"
+                ><p>More info <i class="fas fa-arrow-circle-right"></i></p
+              ></a>
+            </div>
+          </div>
+          <div class="col-lg-3 col-6">
+            <div class="small-box bg-success">
+              <div class="inner">
+                <p>Students</p>
+                <h1>210</h1>
+              </div>
+
+              <a href="#" class="small-box-footer"
+                >More info <i class="fas fa-arrow-circle-right"></i
+              ></a>
+            </div>
+          </div>
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-warning">
+              <div class="inner">
+                <p>Performance</p>
+                <h1>83 %</h1>
+              </div>
+
+              <a href="#" class="small-box-footer"
+                >More info <i class="fas fa-arrow-circle-right"></i
+              ></a>
+            </div>
+          </div>
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-danger">
+              <div class="inner">
+                <p>Targets</p>
+                <h1>3</h1>
+              </div>
+              <a href="#" class="small-box-footer"
+                >More info <i class="fas fa-arrow-circle-right"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

@@ -1,3 +1,4 @@
+from datetime import date
 from os import name
 from django.db import models
 from django.db.models.aggregates import Max
@@ -5,6 +6,7 @@ from django.db.models.deletion import CASCADE
 from django.utils.timezone import timezone
 from django.contrib.auth.models import User
 from django.core.validators import MaxValueValidator, MinValueValidator
+import datetime
 
 
 class Tag(models.Model):
@@ -15,20 +17,22 @@ class Tag(models.Model):
 
 
 class StudentProfile(models.Model):
-    Gender_Choices = [('1', 'Male'), ('2', 'Female')]
+    Gender_Choices = [(1, 'Male'), (2, 'Female')]
     studentname = models.OneToOneField(User, on_delete=models.CASCADE,
-                                       primary_key=True,)
+                                       primary_key=True)
     gender = models.CharField(choices=Gender_Choices,
-                              max_length=2, default='1')
+                              max_length=2, default='2')
+    School = models.CharField(max_length=30, null=True, default="大同國小")
+    SchoolId = models.IntegerField(default=4576)
     photo = models.ImageField(null=True, blank=True,
                               default="naa.png")
     account = models.CharField(max_length=100)
     userId = models.CharField(max_length=255)
-    birthday = models.DateField(null=True, blank=True)
+    birthday = models.IntegerField(default=0)
     weight = models.FloatField(null=True, blank=True)
     height = models.FloatField(null=True, blank=True)
     BMI = models.FloatField(null=True)
-    School = models.CharField(max_length=30, null=True, default="淡江大學")
+
     Class = models.CharField(max_length=30, null=True)
     Section = models.CharField(max_length=30, null=True)
     RollNo = models.IntegerField(default=0)
@@ -38,48 +42,38 @@ class StudentProfile(models.Model):
 
 
 class DailyActivity(models.Model):
-    studentname = models.OneToOneField(
-        User, on_delete=CASCADE, primary_key=True)
-    step = models.IntegerField(null=True, blank=True)
-    stepgoal = models.IntegerField(null=True, blank=True)
-    stepvalue = models.IntegerField(null=True, blank=True)
-    calories = models.IntegerField(null=True, blank=True)
-    caloriesgoal = models.IntegerField(null=True, blank=True)
-    caloriesvalue = models.IntegerField(null=True, blank=True)
-    distance = models.IntegerField(null=True, blank=True)
-    distancegoal = models.IntegerField(null=True, blank=True)
-    distancevalue = models.IntegerField(null=True, blank=True)
-    totalSteps = models.IntegerField(null=True, blank=True)
-    totalCalories = models.IntegerField(null=True, blank=True)
-    totalDistances = models.IntegerField(null=True, blank=True)
-    hasValue = models.BooleanField(default=False, blank=True)
-    goalSteps = models.IntegerField(null=True, blank=True)
-    stride = models.IntegerField(null=True, blank=True)
-    goalCalories = models.IntegerField(null=True, blank=True)
-    heartRateSyncDate = models.DateField(null=True, blank=True)
-    sleepSyncDate = models.DateField(null=True, blank=True)
-    activitySyncDate = models.DateField(null=True, blank=True)
-    mostStepsDate = models.DateField(null=True, blank=True)
-    mostStepsValue = models.IntegerField(null=True, blank=True)
-    achieveDays = models.IntegerField(null=True, blank=True)
-    sleepScore = models.FloatField(null=True, blank=True)
-    heartRatemax = models.FloatField(null=True, blank=True)
-    heartRatemin = models.FloatField(null=True, blank=True)
-    heartRateavg = models.FloatField(null=True, blank=True)
-    date = models.IntegerField(null=True, blank=True)
-    state = models.IntegerField(null=True, blank=True)
-    yesterday_sleep = models.FloatField(null=True, default=0.00)
-    yesterday_calories = models.FloatField(null=True, default=0.00)
-    yesterday_steps = models.FloatField(null=True, default=0)
-    today_sleep = models.FloatField(null=True, default=0.00)
-    today_calories = models.FloatField(null=True, default=0.00)
-    today_steps = models.FloatField(null=True, default=0.00)
-    is_today_steps = models.BooleanField(default=False)
-    is_today_sleep = models.BooleanField(default=False)
-    is_today_calories = models.BooleanField(default=False)
+    class Meta(object):
+        unique_together = (("act_date", "user"), )
+    steps = models.IntegerField(default=0)
+    stepsgoal = models.IntegerField(default=1)
+    calories = models.IntegerField(default=0)
+    caloriesgoal = models.IntegerField(default=1)
+    totaldistance = models.IntegerField(default=0)
+    heartmin = models.IntegerField(default=0)
+    heartmax = models.IntegerField(default=0)
+    hearttotal = models.IntegerField(default=0)
+    recordNum = models.IntegerField(default=0)
+    hasvalue = models.BooleanField(default=False)
+    sleepscore = models.FloatField(default=0.00)
+    act_date = models.DateField()
+    user = models.ForeignKey(StudentProfile, on_delete=models.CASCADE)
+
+    def save(self, *args, **kwargs):
+        self.sleepscore = round(self.sleepscore, 2)
+        super(DailyActivity, self).save(*args, **kwargs)
 
     def __str__(self):
-        return self.studentname.username
+        return '%s %s' % (self.user.studentname.first_name, self.act_date)
+
+# class Act(models.Model):
+#     class Meta(object):
+#         unique_together = (("date", "student", "activity"), )
+#     date = models.DateField(db_index=True, default=datetime.date.today)
+#     student = models.ForeignKey(User, on_delete=CASCADE)
+#     activity = models.(DailyActivity, on_delete=CASCADE)
+
+#     def __str__(self):
+#         return (str(self.date))
 
 
 class Webdata(models.Model):
@@ -116,3 +110,13 @@ class Reward(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Class(models.Model):
+    classname = models.CharField(max_length=200, null=True)
+    # Teacher = models.OneToOneField
+
+
+class Datetest(models.Model):
+    date = models.DateField(
+        primary_key=True, default=datetime.date.today)

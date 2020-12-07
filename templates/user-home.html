@@ -1,10 +1,22 @@
 {% extends 'base.html' %} {% load static %} {% block head %}
-<link rel="stylesheet" href="{% static 'css/user-home.css' %}" />
+<!-- <link rel="stylesheet" href="{% static 'css/user-home.css' %}" />  media="screen and (min-width: 1080px)"  -->
+<link rel="stylesheet" type="text/css"  href="{% static 'css/user-home.css' %}"> 
 <title>User Home</title>
-{% endblock %} {% block content %}
-<!DOCTYPE html>
+<style>
+  .user-home{
+    background: url(/static/images/BG-green.png) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+  </style>
+{% endblock %}
 
-<div>
+{% block content %}
+
+
+<div class="user-home"> 
   <div class="main-container" id="mainBlur">
     <div class="main-div">
       <div class="side-block">
@@ -36,20 +48,20 @@
                       alt="user-dp"
                     />
                     <h5 class="user-name">
-                      {{user.first_name}}{{user.last_name}}
+                      {{user.first_name}}&nbsp;{{user.last_name}}
                     </h5>
                   </div>
                 </div>
                 <div class="award-data">
                   <i
-                    class="fas fa-cog user-conf-btn"
+                    class="fas fa-cog user-conf-btn" style="visibility: hidden;"
                     onclick="userPopUp(2)"
                   ></i>
 
-                  <i class="fas fa-info info-btn" onclick="userPopUp(3)"></i>
-                  <div class="award-pic">
-                    <img src="{%static 'images/award1.jpg'%}" alt="" />
-                    <p class="award-name">我就是你的盾牌</p>
+                  <i class="fas fa-info info-btn" style="visibility: hidden;" onclick="userPopUp(3)"></i>
+                  <div class="award-pic" style="align-items: center; justify-content: center;">
+                    <img src="{%static 'images/award1.jpg'%}" alt="" style="height: 105px; margin-left: 15px ;margin-right: 20px; margin-top: -25px; margin-bottom: 5px;" />
+                    <p class="award-name">盾牌</p>
                   </div>
                 </div>
               </div>
@@ -58,12 +70,13 @@
               <div class="prog-block">
                 <div class="prog-progress">
                   <p class="prog-title">昨日卡路里消耗</p>
-                  <div class="progress">
+                  <div class="progress" style="line-height: 42px; font-size: 1.3rem; "> 
                     <div
                       class="progress-done"
-                      data-done="{{activity.yesterday_calories}}"
+                      style="color: #333;""
+                      {% if yd_cal <= 35 %}  data-done="35"  {% else %} yd_step data-done="{{yd_cal}}" {% endif %}
                     >
-                      {{activity.yesterday_calories}}%
+                      {{yd_cal}}%
                     </div>
                   </div>
                 </div>
@@ -74,9 +87,10 @@
                   <div class="progress">
                     <div
                       class="progress-done graph2"
-                      data-done="{{activity.yesterday_steps}}"
+                      {% if yd_step <= 35 %}  data-done="35"   {% else %} yd_step data-done="{{yd_step}}" {% endif %}
+                      
                     >
-                      {{activity.yesterday_steps}}%
+                      {{yd_step}}%  
                     </div>
                   </div>
                 </div>
@@ -87,9 +101,9 @@
                   <div class="progress">
                     <div
                       class="progress-done graph3"
-                      data-done="{{activity.yesterday_sleep}}"
+                      {% if yd_sleep <= 35 %}  data-done="35"  style="color: #333;" {% else %} yd_step data-done="{{yd_sleep}}" {% endif %}
                     >
-                      {{activity.yesterday_sleep}}%
+                      {{yd_sleep}}%
                     </div>
                   </div>
                 </div>
@@ -101,14 +115,14 @@
           <h3 class="today-title">今日要完成的目標</h3>
           <div class="today-titles">
             <div class="title-set">
-              <div class="prog-dot dot1 {%if activity.is_today_calories %}  dot1done {% endif %}"></div>
-              <h5 class="dot-title title1">{%if activity.is_today_calories %}  完成 {% else %} 未完成 {% endif %}</h5>
+              <div class="prog-dot dot1 {%if td_cal >= 100 %}  dot1done {% endif %}"></div>
+              <h5 class="dot-title title1">{%if td_cal >= 100 %}   {% else %} 未完成 {% endif %}</h5>
               &emsp; &emsp;&ensp;
-              <div class="prog-dot dot2 {%if activity.is_today_steps %}  dot2done {% endif %}"></div>
-              <h5 class="dot-title title2">{%if activity.is_today_steps %}完成 {% else %} 未完成 {% endif %}</h5>
+              <div class="prog-dot dot2 {%if td_step >= 100 %}  dot2done {% endif %}"></div>
+              <h5 class="dot-title title2">{%if td_step >= 100 %}<strong>完成</strong> {% else %} 未完成 {% endif %}</h5>
               &emsp; &emsp;&ensp;
-              <div class="prog-dot dot3 {%if activity.is_today_sleep %}  dot3done {% endif %}"></div>
-              <h5 class="dot-title title3">{%if activity.is_today_sleep %} 完成 {% else %} 未完成 {% endif %}</h5>
+              <div class="prog-dot dot3 {%if td_sleep >= 100 %}  dot3done {% endif %}"></div>
+              <h5 class="dot-title title3">{%if td_sleep >= 100 %} <strong>完成</strong> {% else %} 未完成 {% endif %}</h5>
               &emsp; &emsp;&ensp;
             </div>
           </div>
@@ -118,7 +132,7 @@
                 <li>
                   <div
                     class="bar bar1"
-                    data-percentage="{{activity.today_calories}}"
+                    data-percentage="{{td_cal}}"
                   ></div>
                   <span style="color: #18f927 !important"
                     >C -{{activity.today_calories}}%</span
@@ -127,16 +141,16 @@
                 <li>
                   <div
                     class="bar bar2"
-                    data-percentage="{{activity.today_steps}}"
+                    data-percentage="{{td_step}}"
                   ></div>
                   <span style="color: #ff1b13 !important"
-                    >W - {{activity.today_steps}}%</span
+                    >W-{{activity.today_steps}}%</span
                   >
                 </li>
                 <li>
                   <div
                     class="bar bar3"
-                    data-percentage="{{activity.today_sleep}}"
+                    data-percentage="{{td_sleep}}"
                   ></div>
                   <span style="color: #ffb611 !important"
                     >Z - {{activity.today_sleep}}%</span
@@ -155,13 +169,13 @@
             <button onclick="showPanel(0,'#f44336')">單元學習</button>
             <button onclick="showPanel(1,'#4caf50')">比較數據</button>
             <button onclick="showPanel(2,'#2196f3')">遊戲相關</button>
-            <button onclick="showPanel(3,'#ff5722')">個人數據</button>
+            <button onclick="showPanel(3,'#a55eea')">個人數據</button>
             <button onclick="showPanel(4,'#f1c40f')">網站說明</button>
           </div>
-          <div class="tabPanel">{% include 'chart-block.html'%}</div>
+          <div class="tabPanel">{% include 'lesson-block.html'%}</div>
           <div class="tabPanel">{% include 'statistics-block.html'%}</div>
           <div class="tabPanel">{% include 'game-block.html'%}</div>
-          <div class="tabPanel">{% include 'lesson-block.html'%}</div>
+          <div class="tabPanel">{% include 'chart-block.html'%}</div>
           <div class="tabPanel">{% include 'web-info.html'%}</div>
         </div>
       </div>
@@ -175,8 +189,8 @@
         <div class="card-body">
           <style>
             .profile-pic{
-              max-width: 200px;
-              max-height:200px;
+              width: 200px;
+              height:200px;
               margin: 0 auto;
               border-radius: 50%;
             }
@@ -224,12 +238,12 @@
                 <th scope="col" class="h5 text-left pt-2">{{user.first_name}}{{user.last_name}}</th>                
               </tr>
               <tr>                
-                <th scope="col" class="h5 text-right pt-0">用戶ID:</th>
+                <th scope="col" class="h5 text-right pt-0">帳戶:</th>
                 <th scope="col" class="h5 text-left pt-0">{{user.username}}</th>                
               </tr>
               <tr>                
-                <th scope="col" class="h5 text-right pt-0">學號:</th>
-                <th scope="col" class="h5 text-left pt-0">{{profile.RollNo}}</th>                
+                <th scope="col" class="h5 text-right pt-0">用戶ID:</th>
+                <th scope="col" class="h5 text-left pt-0">{{profile.userId}}</th>                
               </tr>
               <tr>                
                 <th scope="col" class="h5 text-right pt-0">班別:</th>
@@ -267,14 +281,14 @@
       </div>
      </div>  
   </div>
-  <script
+  <scrip
     src="https://kit.fontawesome.com/3440ae8e61.js"
     crossorigin="anonymous"
   ></script>
-  <script
+  <scrip
     src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"
     charset="utf-8"
-  ></script>
+  ></scrip>
 
   <script type="text/javascript">
     $(function () {
@@ -309,9 +323,10 @@
     // const progress = document.querySelectorAll(".progress-done");
     // progress.style.width = progress.getAttribute("data-done") + "%";
     // progress.style.opacity = 1;
+    
   </script>
  
-  </script>
+  
   <script src="{% static 'js/user-tab.js'%}"></script>
   <div class="height"></div>
 </div>

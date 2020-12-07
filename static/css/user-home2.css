@@ -1,0 +1,151 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.user-bg {
+  background: url(/static/images/BG-green.png) no-repeat center center fixed;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  min-height: 79vh;
+}
+
+.user-body {
+  max-width: 1400px;
+  margin: 10px auto 0 auto;
+  display: flex;
+  min-height: 79vh;
+  justify-content: space-between;
+}
+.user-main {
+  flex: 3;
+  min-height: 100px;
+  margin: auto;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.user-sidebar {
+  flex: 1;
+  min-height: 100px;
+  display: flex;
+  margin: auto;
+  flex-direction: column;
+}
+
+.user-info {
+  background-color: aquamarine;
+  flex: 1;
+  min-height: 38vh;
+}
+
+.today-prog {
+  background-color: bisque;
+  flex: 1;
+  min-height: 38vh;
+}
+
+.main-block {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  min-height: 79vh;
+  border-radius: 25px;
+  margin-top: 10px;
+  opacity: 0.95;
+  background-color: rgba(255, 255, 255, 1);
+  border: 4px solid rgba(23, 68, 166, 1);
+  grid-area: mainblock;
+  max-width: 960px;
+}
+
+.tabContainer {
+  padding: 0;
+  width: 100%;
+  height: 760px;
+  border-radius: 20px;
+  overflow: hidden;
+}
+.tabContainer .buttonContainer {
+  height: 70px;
+}
+.tabContainer .buttonContainer button {
+  width: 20%;
+  height: 100%;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 5px;
+  font-size: 30px;
+  background-color: #eee;
+  border-radius: 20px 20px 0 0;
+}
+.tabContainer .buttonContainer button:hover {
+  background-color: #d7d4d4;
+  border-radius: 20px 20px 0 0;
+}
+.tabContainer .tabPanel {
+  height: 100%;
+  background-color: white;
+  text-align: center;
+  box-sizing: border-box;
+  font-size: 22px;
+  display: none;
+  width: 100%;
+  padding-top: 10px;
+}
+
+.vert-graph {
+  height: 75%;
+  width: 98%;
+  margin: 0;
+  padding: 0;
+  margin-left: 4px;
+  border-radius: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.vert-graph-title > h3 {
+  font-family: Helvetica, sans-serif !important;
+  font-weight: bold;
+  color: white;
+  font-size: 1.5rem;
+  line-height: 35px;
+}
+
+.chart {
+  width: 400px;
+  height: 330px;
+  display: block;
+}
+
+.tab-body {
+  width: 98%;
+  height: 90%;
+  border-radius: 25px;
+  opacity: 0.81;
+  background-color: rgba(255, 255, 255, 1);
+  border: 3px solid rgba(23, 68, 166, 1);
+  margin: auto;
+  padding-top: 10px;
+}
+
+.progress-done {
+  background: #18f927;
+  box-shadow: 0 3px 3px -5px #18f927, 0 2px 5px #aaa69d;
+  border-radius: 20px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 0;
+  opacity: 0;
+  transition: 1s ease 0.3s;
+  font-size: 1.5rem;
+}

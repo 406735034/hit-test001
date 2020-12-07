@@ -1,0 +1,90 @@
+{% extends 'base.html' %} {% load static %} {% block head %}
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'css/user-home2.css' %}"
+/>
+<title>User Home</title>
+
+{% endblock %} {% block content %}
+<div class="user-bg">
+  <div class="user-body">
+    <div class="user-sidebar">
+      <div class=" user-info">
+        <h1>User Sidebar</h1>
+        user info Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo
+        aliquid enim illum, voluptate suscipit velit necessitatibus ipsum
+        praesentium laborum dolorum, maiores, possimus rem corrupti porro amet
+        dolorem rerum debitis ratione?
+      </div>
+      <div class="today-prog">today progess</div>
+    </div>
+
+    <div class="user-main">
+      <div class="main-block">
+        <div class="tabContainer">
+          <div class="buttonContainer">
+            <button onclick="showPanel(0,'#f44336')">單元學習</button>
+            <button onclick="showPanel(1,'#4caf50')">比較數據</button>
+            <button onclick="showPanel(2,'#2196f3')">遊戲相關</button>
+            <button onclick="showPanel(3,'#a55eea')">個人數據</button>
+            <button onclick="showPanel(4,'#f1c40f')">網站說明</button>
+          </div>
+          <div class="tabPanel">{% include 'lesson-block.html'%}</div>
+          <div class="tabPanel">{% include 'statistics-block.html'%}</div>
+          <div class="tabPanel">{% include 'game-block.html'%}</div>
+          <div class="tabPanel">{% include 'chart-block.html'%}</div>
+          <div class="tabPanel">{% include 'web-info.html'%}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script
+src="https://kit.fontawesome.com/3440ae8e61.js"
+crossorigin="anonymous"
+></script>
+<script
+src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"
+charset="utf-8"
+></script>
+
+<script type="text/javascript">
+$(function () {
+  $(".bars li .bar").each(function (key, bar) {
+    var percentage = $(this).data("percentage");
+    $(this).animate(
+      {
+        height: percentage * 0.9 + "%",
+      },
+      1000
+    );
+  });
+});
+
+function userPopUp(dcode) {
+  var userpop = document.querySelectorAll(".user-settings-pop");
+  var allBlur = document.getElementById("mainBlur");
+  userpop.forEach(function (node) {
+    node.style.display = "none";
+  });
+  userpop[dcode].style.display = "block";
+  userpop[dcode].classList.toggle("show");
+  allBlur.classList.toggle("blractive");
+}
+
+let allProgress = document.querySelectorAll(".progress-done");
+
+allProgress.forEach(function (progress) {
+  progress.style.width = progress.getAttribute("data-done") + "%";
+  progress.style.opacity = 1;
+});
+// const progress = document.querySelectorAll(".progress-done");
+// progress.style.width = progress.getAttribute("data-done") + "%";
+// progress.style.opacity = 1;
+</script>
+
+</script>
+<script src="{% static 'js/user-tab.js'%}"></script>
+
+{% endblock %}

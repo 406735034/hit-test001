@@ -5,6 +5,7 @@ from django.contrib.auth import views as auth_views
 
 from rest_framework import routers
 
+
 router = routers.DefaultRouter()
 
 
@@ -14,7 +15,7 @@ urlpatterns = [
     # Login
     path('login/', views.loginPage, name='login'),
     path('logout/', views.logoutUser, name='logout'),
-    path('register/', views.register, name='register'),
+    # path('register/', views.register, name='register'),
     # Reset Password
     path('reset_password/', auth_views.PasswordResetView.as_view(
         template_name="reset_password.html"), name="reset_password"),
@@ -25,8 +26,11 @@ urlpatterns = [
     path('reset_password_complete/', auth_views.PasswordResetCompleteView.as_view(
         template_name='password_reset_complete.html'), name="password_reset_complete"),
 
-    # Home
+    # Admin
     path('dashboard/', views.dashboard, name='dashboard'),
+
+    # Teacher
+    path('teacherdash/', views.teacherPage, name='teacher-page'),
 
     # User
     path('user/', views.userPage, name='user-page'),
@@ -37,4 +41,20 @@ urlpatterns = [
     path('restrict/', views.restrict, name='restrict'),
 
     path('route/', include(router.urls)),
+
+    # Lessons
+    path('lesson1/', views.lesson1, name='lesson1'),
+    path('lesson2/', views.lesson2, name='lesson2'),
+    path('lesson3/', views.lesson3, name='lesson3'),
+
+
+    # update
+    path('update/', views.update, name='update'),
+
+    # gamewindow
+
+    path('game/', views.game, name='game'),
+
+
+
 ]

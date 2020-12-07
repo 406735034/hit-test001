@@ -9,7 +9,13 @@
   font-style: normal;
 }
 
+.login-main {
+  min-height: 75vh;
+  display: flex;
+}
+
 .login-block {
+  margin: auto;
   width: 450px;
   height: auto;
   left: 0;

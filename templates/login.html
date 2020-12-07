@@ -3,7 +3,7 @@
          
     
    {% block head %}
-   <title>Login Page</title>
+     <title>Login Page</title>
    {% endblock %}
     
    
@@ -11,21 +11,21 @@
     {% block content %}
    
   
-      <div class="mx-auto my-auto">
+      <div class="login-main">
         <div class="login-block my-auto">
-          <form action="" class="sign-in-form" method="POST">
+          <form action="" class="sign-in-form" id="loginForm" method="POST">
             {%csrf_token%}
-            <h2 class="title">登入</h2>
+            <h2 class="title">登入</h2> <br>
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input type="text" placeholder="用戶名" name="username" />
-            </div>
+              <input type="text" placeholder="用戶名" id="username" name="username" />
+            </div> <br>
             <div class="input-field">
               <i class="fas fa-lock"></i>
-              <input type="password" placeholder="密碼" name="password" />
-            </div>
-            <input type="submit" value="登入" class="login-btn solid" />
-            <p class="forgot-hint"><a href="{% url 'reset_password'%}"><i class="fa fa-lock m-r-5" ></i> 忘記密碼？</a></p>
+              <input type="password" placeholder="密碼" id="password" name="password" />
+            </div><br>
+            <input  type="submit" value=" 登入" id="login" class="login-btn solid" />
+            <!-- <p class="forgot-hint"><a href="{% url 'reset_password'%}"><i class="fa fa-lock m-r-5" ></i> 忘記密碼？</a></p> --> <br>
             <p ">{% for message in messages%}
                 <p class="db" style="color:red;"><strong>{{message}}</strong></p>
             {% endfor %}</p>
@@ -33,5 +33,25 @@
       </div>
       
    </div>
+   
+   
+<script>
+    
+  
+    $("#login").click(async function () {
+
+      if( $("#username").val()==""){
+        alert("請輸入用戶名...!!!")
+      }else{
+        if(  $("#password").val()=="")
+        {
+          alert("請輸入密碼...!!!")
+        }
+      }
+      
+      
+      return false;
+    });
+  </script>
 
 {% endblock %}

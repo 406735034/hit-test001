@@ -17,16 +17,17 @@
 
 .lesson-num {
   position: relative;
-  height: 120px;
-  width: 110px;
-  margin: 15px 30px;
+  height: 120px !important;
+  width: 90px !important;
+  width: 8%;
+  margin: 15px 25px;
   border-radius: 15px;
   border: 4px solid rgba(23, 68, 166, 1);
   text-align: center;
 }
 
 .lesson-num > h1 {
-  font-size: 9rem;
+  font-size: 7rem;
   line-height: 110px;
 }
 
@@ -37,8 +38,10 @@
 .lesson-data {
   position: relative;
   height: 98%;
-  width: 590px;
+  max-width: 590px;
+  width: 90%;
   margin: 1px 2px;
+  width: 0mm;
 }
 
 .lesson-data .data-top {
@@ -165,7 +168,7 @@
   position: absolute !important;
   top: 130px;
   height: 50px !important;
-  width: 100%;
+  width: 50vw !important;
   border-radius: 20px;
   position: relative;
   display: block;
@@ -174,7 +177,8 @@
 }
 
 .lsngrphdata {
-  font-size: 3rem !important;
+  font-size: 2rem !important;
+
   background-color: #6704a8;
 }
 
@@ -184,4 +188,13 @@
 
 .lsngrphdata3 {
   background-color: #518b2d;
+}
+
+.les-progress {
+  background-color: #d8d8d8;
+  border-radius: 20px;
+  position: relative;
+  margin: 15px 0;
+  height: 45px;
+  width: 32vw !important;
 }

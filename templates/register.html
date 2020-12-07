@@ -26,7 +26,7 @@
                 <span
                   class="input-group-text bg-warning text-white"
                   id="basic-addon1"
-                  ><i class="fas fa-user"></i
+                  >First Name<i class="fas fa-user"></i
                 ></span>
               </div>
               {{form.first_name}}
@@ -34,9 +34,9 @@
             <div class="input-group mb-3">
               <div class="input-group-prepend">
                 <span
-                  class="input-group-text bg-inverse text-white"
+                  class="input-group-text bg-primary text-white"
                   id="basic-addon1"
-                  ><i class="fas fa-user-plus"></i
+                  >Last Name<i class="fas fa-user-plus"> </i
                 ></span>
               </div>
               {{form.last_name}}
@@ -46,7 +46,7 @@
                 <span
                   class="input-group-text bg-success text-white"
                   id="basic-addon1"
-                  ><i class="ti-user"></i
+                  >Username<i class="fas fa-user-astronaut"></i
                 ></span>
               </div>
               {{form.username}}
@@ -55,19 +55,9 @@
             <div class="input-group mb-3">
               <div class="input-group-prepend">
                 <span
-                  class="input-group-text bg-danger text-white"
-                  id="basic-addon1"
-                  ><i class="ti-email"></i
-                ></span>
-              </div>
-              {{form.email}}
-            </div>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span
                   class="input-group-text bg-warning text-white"
                   id="basic-addon2"
-                  ><i class="fa fa-key"></i
+                  >Password<i class="fa fa-key"></i
                 ></span>
               </div>
               {{form.password1}}
@@ -77,7 +67,7 @@
                 <span
                   class="input-group-text bg-info text-white"
                   id="basic-addon2"
-                  ><i class="fa fa-key"></i
+                  >Confirm Password<i class="fa fa-key"></i
                 ></span>
               </div>
               {{form.password2}}
@@ -121,9 +111,9 @@
   form_fields[1].placeholder = "First Name";
   form_fields[2].placeholder = "Last Name";
   form_fields[3].placeholder = "Username";
-  form_fields[4].placeholder = "Email Address";
-  form_fields[5].placeholder = "Enter Password";
-  form_fields[6].placeholder = "Confirm Password";
+
+  form_fields[4].placeholder = "Enter Password";
+  form_fields[5].placeholder = "Confirm Password";
 
   for (var field in form_fields) {
     form_fields[field].className += "form-control form-control-lg";

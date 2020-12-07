@@ -1,0 +1,161 @@
+{% load static %}
+<head>
+  <link rel="stylesheet" href="{% static 'css/chart-block.css' %}" />
+  
+  <script
+    src="https://code.jquery.com/jquery-1.12.4.js"
+    integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="
+    crossorigin="anonymous"
+  ></script>
+  <script src="{% static 'js/highchart.js' %}"></script>
+</head>
+
+<body>
+  <div class="tab-body">
+    <div class="chart-top">
+      <button
+        type="button"
+        name="mychart"
+        class="button line-btn"
+        id="column"
+        value="column"
+      >
+        <img
+          src="{% static 'images/own-icons/bar.png' %}"
+          alt=""
+          srcset=""
+          id="cal-icon"
+        />
+        &nbsp; 條圖
+      </button>
+      <button
+        class="button pie-btn"
+        type="button"
+        name="mychart"
+        class="button line-btn"
+        id="line"
+        value="spline"
+      >
+        <img
+          src="{% static 'images/own-icons/line.png' %}"
+          alt=""
+          srcset=""
+          id="steps-icon"
+        />
+        線形圖
+      </button>
+      <button class="button bar-btn" 
+      class="button pie-btn"
+        type="button"
+        name="mychart"
+        class="button line-btn"
+        id="pie"
+        value="pie"">
+        <img
+          src="{% static 'images/own-icons/pie.png' %}"
+          alt=""
+          srcset=""
+          id="sleep-icon"
+        />
+        餅圖
+      </button>
+    </div>
+    <div class="chart-middle">
+      <div class="tabSideContainer">
+        <div class="chart-btn">
+          <div class="sideButtonContainer">
+            <h3>類型</h3>
+            <button class="button graph-btn1" value = "卡路里" id='grphcalory'>
+              <img
+                src="{% static 'images/own-icons/cal-icon.png' %}"
+                alt=""
+                srcset=""
+                id="cal-icon"
+                
+              />
+              卡路里
+            </button>
+            <button
+              class="button graph-btn2"
+              value= '步行數'
+              id="grphsteps"
+            >
+              <img
+                src="{% static 'images/own-icons/steps-icon.png' %}"
+                alt=""
+                srcset=""
+                id="steps-icon"
+              />
+              步行數
+            </button>
+            <button class="button graph-btn3" value=" 睡眠量" id="grphsleep">
+              <img
+                src="{% static 'images/own-icons/sleep-icon.png' %}"
+                alt=""
+                srcset=""
+                id="sleep-icon"
+              />
+              睡眠量
+            </button>
+          </div>
+          <div class="sideButtonContainer container2">
+            <h3>方式</h3>
+            <button class="button self-btn" onclick="showSidePanel(0,'red')">
+              <img
+                src="{% static 'images/own-icons/self.png' %}"
+                alt=""
+                srcset=""
+                id="self-icon"
+              />
+              學生平均
+            </button>
+            <button
+            class="button classmate-btn"
+            onclick="showSidePanel(2,'blue')"
+          >
+            <img
+              src="{% static 'images/own-icons/classmate.png' %}"
+              alt=""
+              srcset=""
+              id="classmate-icon"
+            />
+            全班比較
+          </button>
+            <button
+              class="button all-class-btn"
+              onclick="showSidePanel(1,'green')"
+            >
+              <img
+                src="{% static 'images/own-icons/all-class.png' %}"
+                alt=""
+                srcset=""
+                id="all-class-icon"
+              />
+              全校平均
+            </button>
+           
+          </div>
+        </div>
+        <div class="chartArea">
+          <div
+            id="container"
+            style="min-width: 310px; height: 400px; margin: 0 auto"
+          ></div>
+
+         
+          <div ><h1 id="chart-title"> 卡路里 </h1></div>
+         
+
+          <br />
+        </div>
+        <div class="chartArea">2</div>
+        <div class="chartArea">3</div>
+      </div>
+    </div>
+    
+  </div>
+  <script src="{% static 'js/user-side-tab.js'%}"></script>
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="{% static 'js/exporting.js'%}"></script>
+  <!-- <script src="http://code.highcharts.com/modules/exporting.js"></script> -->
+</body>

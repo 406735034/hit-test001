@@ -22,4 +22,4 @@ class ResetForm(PasswordResetForm):
 class StudentForm(ModelForm):
     class Meta:
         model = StudentProfile
-        fields = ['photo', 'birthday', 'weight', 'height']
+        fields = ['photo']

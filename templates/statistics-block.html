@@ -6,7 +6,7 @@
 <body>
   <div class="tab-body">
     <div class="stat-top">
-      <a href="#">
+      <!-- <a href="#">
         <div class="stat-btn">
           <img
             src="{% static 'images/own-icons/calendar.png' %}"
@@ -19,6 +19,16 @@
       <a href="#">
         <div class="stat-btn">
           <img
+            src="{% static 'images/own-icons/calendar.png' %}"
+            alt=""
+            srcset=""
+          />
+          <h2>今日</h2>
+        </div>
+      </a> -->
+      <!-- <a href="#">
+        <div class="stat-btn">
+          <img
             src="{% static 'images/own-icons/progress.png' %}"
             alt=""
             srcset=""
@@ -26,48 +36,58 @@
           />
           <h2>平均</h2>
         </div>
-      </a>
+      </a> -->
+      <h1 class="text-center" style="color: #009432">今天排行</h1>
     </div>
     <div class="stat-middle">
       <div class="lboard">
         <h1>卡路里排行榜</h1>
         <div class="rank">1</div>
-        <h2>Richard</h2>
+        <h2>{{todayrank.calrank1}}</h2>
         <div class="rank">2</div>
-        <h2>Nic</h2>
+        <h2>{{todayrank.calrank2}}</h2>
         <div class="rank">3</div>
-        <h2>Robert</h2>
-        <div class="rank myrank">16</div>
+        <h2>{{todayrank.calrank3}}</h2>
+        <div class="rank myrank">{{todayrank.mycalrank}}</div>
         <h2 id="myrank">{{user.first_name}}{{user.last_name}}</h2>
       </div>
       <div class="lboard lboard-middle">
         <h1>步行數排行榜</h1>
         <div class="rank">1</div>
-        <h2>Richard</h2>
+        <h2>{{todayrank.steprank1}}</h2>
         <div class="rank">2</div>
-        <h2>Nic</h2>
+        <h2>{{todayrank.steprank2}}</h2>
         <div class="rank">3</div>
-        <h2>Robert</h2>
+        <h2>{{todayrank.steprank3}}</h2>
 
-        <div class="rank myrank">16</div>
+        <div class="rank myrank">{{todayrank.mystprank}}</div>
         <h2 id="myrank">{{user.first_name}}{{user.last_name}}</h2>
       </div>
       <div class="lboard lboard-right">
         <h1>睡眠量排行榜</h1>
         <div class="rank">1</div>
-        <h2>Richard</h2>
+        <h2>{{todayrank.slprank1}}</h2>
         <div class="rank">2</div>
-        <h2>Nic</h2>
+        <h2>{{todayrank.slprank2}}</h2>
         <div class="rank">3</div>
-        <h2>Robert</h2>
+        <h2>{{todayrank.slprank3}}</h2>
 
-        <div class="rank myrank">16</div>
+        <div class="rank myrank">{{todayrank.myslprank}}</div>
         <h2 id="myrank">{{user.first_name}}{{user.last_name}}</h2>
       </div>
     </div>
     <div class="stat-bottom">
+      {% if todayrank.calrank1 == user.first_name %}
       <div class="stat-info stat-info-left">
-        <div class="stat-btm-img"></div>
+        <div class="stat-btm-img">
+          <img
+            class="stat-btm"
+            src="{%static 'images/stat1-btm.jpeg'%}"
+            alt=""
+            srcset=""
+          />
+        </div>
+
         <div class="stat-btm-info">
           <h2>運動達人</h2>
           <p>
@@ -79,8 +99,37 @@
           </p>
         </div>
       </div>
+      {% else %}
+      <div class="stat-info stat-info-left">
+        <div class="stat-btm-img">
+          <img
+            class="stat-btm"
+            src="{%static 'images/stat3-btm.jpeg'%}"
+            alt=""
+            srcset=""
+          />
+        </div>
+
+        <div class="stat-btm-info">
+          <h2>運動平民</h2>
+          <p>
+            當你的卡路里消耗量 <br />
+            在第一名以下的時候 <br />
+            (無論是昨日還是平均) <br />
+            你就可以得到這枚徽章. <br />
+          </p>
+        </div>
+      </div>
+      {% endif %} {% if todayrank.slprank1 == user.first_name %}
       <div class="stat-info stat-info-right">
-        <div class="stat-btm-img"></div>
+        <div class="stat-btm-img">
+          <img
+            class="stat-btm"
+            src="{%static 'images/stat2-btm.jpeg'%}"
+            alt=""
+            srcset=""
+          />
+        </div>
         <div class="stat-btm-info">
           <h2>運動達人</h2>
           <p>
@@ -92,6 +141,27 @@
           </p>
         </div>
       </div>
+      {% else %}
+      <div class="stat-info stat-info-right">
+        <div class="stat-btm-img">
+          <img
+            class="stat-btm"
+            src="{%static 'images/stat3-btm.jpeg'%}"
+            alt=""
+            srcset=""
+          />
+        </div>
+        <div class="stat-btm-info">
+          <h2>運動平民</h2>
+          <p>
+            當你的卡路里消耗量 <br />
+            在第一名以下的時候 <br />
+            (無論是昨日還是平均) <br />
+            你就可以得到這枚徽章. <br />
+          </p>
+        </div>
+      </div>
+      {% endif %}
     </div>
   </div>
 </body>

@@ -1,0 +1,9 @@
+@font-face {
+    font-family: "tangyuan";
+    src:url(tangyuan.ttf);
+      
+}
+body,
+input{
+    font-family: "tangyuan";
+}

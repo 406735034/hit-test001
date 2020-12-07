@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Firebase Update</title>
+  </head>
+  <body>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <script>
+      // Your web app's Firebase configuration
+      var data = {
+        userAccount: {
+          AtCb331amPOONKoTm0RFlkQXlw32: {
+            IngameName: 0,
+            dailymission: {
+              calorie: 0,
+              quiz: 0,
+              walk: 0,
+            },
+            levelstatus: {
+              final: {
+                finaldone: 0,
+                now: 0,
+              },
+              nowstatus: "1-1",
+              unit1: {
+                map4Boss: 0,
+                now: 1,
+                unit1done: 0,
+              },
+              unit2: {
+                map4Boss: 0,
+                now: 0,
+                unit2done: 0,
+              },
+              unit3: {
+                map4Boss: 0,
+                now: 0,
+                unit3done: 0,
+              },
+            },
+            ringdata: {
+              calorie: 0,
+              donequiz: 0,
+              sleep: 0,
+              walk: 0,
+            },
+            stage: 0,
+            status: {
+              industry: 0,
+              precognition: 0,
+              strain: 0,
+            },
+            weapons: 0,
+          },
+        },
+      };
+
+      console.log(data);
+      var firebaseConfig = {
+        apiKey: "AIzaSyDZN_Zk2UcHshXeKoFf2GID_8BN3VEI2GI",
+        authDomain: "datonges.firebaseapp.com",
+        databaseURL: "https://datonges.firebaseio.com",
+        projectId: "datonges",
+        storageBucket: "datonges.appspot.com",
+        messagingSenderId: "552586582453",
+        appId: "1:552586582453:web:51d8ebb82acf66649521fc",
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+    </script>
+  </body>
+</html>

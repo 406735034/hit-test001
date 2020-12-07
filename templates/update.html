@@ -1,0 +1,131 @@
+{% extends 'base.html' %} {% block content %} {%load static%}
+<style>
+  input {
+    height: 80px;
+    width: 300px;
+    font-size: 2rem;
+   border: none;
+  }
+  .button {
+    background-color: #4caf50; /* Green */
+    border: none;
+    color: white;
+
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 2rem;
+    font-weight: 600;
+
+    transition-duration: 0.4s;
+    cursor: pointer;
+  }
+  .button1 {
+    background-color: white;
+    color: black;
+    border: 3px solid #4caf50;
+  }
+  .button1:hover {
+    background-color: #4caf50;
+    color: white;
+    height: 80;
+  }
+  .label1{
+    font-size: 2rem; 
+    font-weight: 600; 
+    background-color: lightblue; 
+    height: 80px;
+    width: 120px;
+    background-color: #D980FA;
+    
+  }
+  .label2{
+    font-size: 2rem; 
+    font-weight: 600; 
+    background-color: lightblue; 
+    height: 80px;
+    width: 120px;
+    
+  }
+  .h2-text{
+    top: 300px;
+    font-size: 3.5rem;
+  }
+
+.messagein{
+  position: absolute;
+  top: 600px;
+}
+
+.messagein h1{
+  font-size: 3rem;
+  font-weight: 900;
+}
+  .update-box{
+    border: 5px solid #16a085;
+    border-radius: 20%;
+    background-color: #fff;
+    height: 600px;
+    width: 1200px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 70px !important;
+  }
+  .start{
+    position: absolute;
+    top: 10;
+    left: 800px;
+  }
+</style>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  
+</head>
+<div
+  class="jumbotron"
+  style="background-color: transparent; min-height: 72vh; padding-top: 10px"
+>
+<div class="row update-box mx-auto my-auto">
+  <h2 class="text-center font-weight-bold position-absolute h2-text">更新資料庫</h2> 
+  
+  <div class="text-center  d-flex justify-content-center ">
+      
+    
+    <form
+      action=""
+      class="form-inline justify-content-center mx-3"
+      method="POST"
+    >
+    {%csrf_token%}
+    
+    <label class="label1">啟始日: </label>
+    <input type="date" id="date1" name="startdate" required style="background-color:#9b59b6;" />&nbsp;&nbsp;
+    <label class="label2">結束日: </label>
+    <input type="date" id="date2" name="enddate" required style="background-color: #3498db;" />&nbsp;&nbsp;
+    <!-- <input type="text" id="epdate" name="epdate"  /> -->
+    <input class="button button1" type="submit" id="update" name='update' value="更新" /></form>
+    
+    
+    </div>
+    <div class="messagein" >{% for message in messages%}
+      <h1 class="db" style="color:#16a085;"><strong>{{message}}</strong></h1>
+  {% endfor %}</div>
+    </div>
+  </div>
+</div>
+<script>
+ 
+  
+
+  $("#update").click(function () {
+    if ($("#date1").val() == "") {
+      alert('Please Select Start Date!');
+    }else{
+      if ($("#date2").val() == "") {
+      alert('Please Select End Date!');
+      }
+    }
+  });
+</script>
+
+{% endblock %}
