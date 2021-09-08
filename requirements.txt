@@ -33,7 +33,7 @@ mccabe==0.6.1
 mysqlclient==1.4.6
 oauthlib==2.1.0
 pep8==1.7.1
-Pillow==7.1.2
+Pillow==8.3.2
 pycodestyle==2.6.0
 pycparser==2.20
 PyJWT==1.7.1
